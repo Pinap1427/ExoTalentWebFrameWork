@@ -5,9 +5,8 @@
     <classes>
       <class name="ExoTalentWeb.TestCase.WebTestCases">
         <methods>
-          <include name="RecruiterSignup"/>
+          <include name="CompanyPageSignup"/>
           <include name="setUp"/>
-          <include name="RecruiterCandidateRefer"/>
           <include name="teardown"/>
         </methods>
       </class> <!-- ExoTalentWeb.TestCase.WebTestCases -->

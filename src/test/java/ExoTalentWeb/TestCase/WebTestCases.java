@@ -22,6 +22,7 @@ import ExoTalentWebWeb.Pages.CandidateApplyJob;
 import ExoTalentWebWeb.Pages.CandidateSaveandUnsaveJob;
 import ExoTalentWebWeb.Pages.CandidateSignup;
 import ExoTalentWebWeb.Pages.CandidateWithdrawJob;
+import ExoTalentWebWeb.Pages.CompanySignupPage;
 import ExoTalentWebWeb.Pages.RecruiterReferCandiadte;
 import ExoTalentWebWeb.Pages.RecruiterSignup;
 import ExoTalentWebWeb.Pages.RecruiterLogin;
@@ -46,6 +47,8 @@ public class WebTestCases extends TestBaseClassWeb {
 	RecruiterSignup signupRecruiter;
 	RecruiterReferCandiadte referCandidaterecuriter;
 	RecruiterLogin loginRecruiter;
+	
+	CompanySignupPage signupCompany;
 
 	@BeforeTest
 	public void setUp() throws IOException {
@@ -62,6 +65,8 @@ public class WebTestCases extends TestBaseClassWeb {
 		signupRecruiter = new RecruiterSignup();
 		referCandidaterecuriter = new RecruiterReferCandiadte();
 		loginRecruiter = new RecruiterLogin();
+		
+		signupCompany= new CompanySignupPage();
 	}
 
 	@Test(priority = 1, enabled = false)
@@ -409,7 +414,7 @@ public class WebTestCases extends TestBaseClassWeb {
 
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void RecruiterLogin() throws IOException {
 
 		testutilsWeb.extentReport();
@@ -471,8 +476,7 @@ public class WebTestCases extends TestBaseClassWeb {
 				testutilsWeb.passTestCase("Recruiter is not Able to Refer Successfully");
 
 			}
-			Thread.sleep(1000);
-			Thread.sleep(1000);
+		
 		} catch (Exception e) {
 			
 			// TODO: handle exception
@@ -481,6 +485,70 @@ public class WebTestCases extends TestBaseClassWeb {
 		}
 	}
 	
+	/*
+	 * Company Page Signup
+	 */	
+	@Test(priority = 9, enabled = true)
+	public void CompanyPageSignup() throws IOException {
+
+		testutilsWeb.extentReport();
+
+		testutilsWeb.testCaseCreate("Tc 08: Company Page Signup");
+		try {
+			
+			signupCompany.ClickonJoinAsButton();
+			testutilsWeb.test.log(Status.INFO, "Click on join as button");
+			signupCompany.ClickonCompanyButton();
+			testutilsWeb.test.log(Status.INFO, "Click on company button");
+			signupCompany.ClickonSignupButton();
+			testutilsWeb.test.log(Status.INFO, "Click on Signup button");
+			signupCompany.EnterDomain();
+			testutilsWeb.test.log(Status.INFO, "Enter Domain");
+			signupCompany.EnterCompanyEmailid();
+			testutilsWeb.test.log(Status.INFO, "Enter Company Email id ");
+			signupCompany.EnterOTP();
+			testutilsWeb.test.log(Status.INFO, "Enter Otp");
+			signupCompany.EnterCompanyName();
+			testutilsWeb.test.log(Status.INFO, "Enter Company Name");
+			signupCompany.EnterCompanyDescription();
+			testutilsWeb.test.log(Status.INFO, "enter Company Description");
+			signupCompany.EnterCompanyTagline();
+			testutilsWeb.test.log(Status.INFO, "Enter Company Tagline");
+			signupCompany.SelectOrgTypeFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Organization Type from dropdown");
+			signupCompany.SelectIndTypeFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Industry from Dropdown");
+			signupCompany.SelectTeamSizeTypeFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Team Size From Dropdown");
+			signupCompany.EnterYearofEstablishment();
+			testutilsWeb.test.log(Status.INFO, "Enter Year of Establishment");
+			signupCompany.EnterCompanyWebSite();
+			testutilsWeb.test.log(Status.INFO, "Enter Company WebSite");
+			signupCompany.SelectHeadOfficeLocationTypeFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Head Office Location from Dropdown");
+			signupCompany.ClickonSaveButtonCompany();
+			testutilsWeb.test.log(Status.INFO, "Click on Save Button");
+			Thread.sleep(2000);
+			signupCompany.ClickonViewDashborad();
+			testutilsWeb.test.log(Status.INFO, "Click on Dashboard");
+//			signupCompany.uploadLogoImage();
+//			testutilsWeb.test.log(Status.INFO, "Upload Logo Image");
+//			signupCompany.uploadBannerImage();
+//			testutilsWeb.test.log(Status.INFO, "Upload Banner Image");
+			Thread.sleep(1000);
+			if (signupCompany.VerifyCompanyCreated()) {
+				testutilsWeb.passTestCase("Company Created Succesfully");
+			} else {
+				testutilsWeb.passTestCase("Company creation failed.");
+
+			}
+			
+		} catch (Exception e) {
+			testutilsWeb.failTestCase("Exception occurred during Company Signup:" + e.getMessage());
+			e.printStackTrace(); // Log the exception for debugging
+			// TODO: handle exception
+		}
+}
 
 	@AfterTest
 	public void teardown() {
