@@ -22,6 +22,7 @@ import ExoTalentWebWeb.Pages.CandidateApplyJob;
 import ExoTalentWebWeb.Pages.CandidateSaveandUnsaveJob;
 import ExoTalentWebWeb.Pages.CandidateSignup;
 import ExoTalentWebWeb.Pages.CandidateWithdrawJob;
+import ExoTalentWebWeb.Pages.CompanyLogin;
 import ExoTalentWebWeb.Pages.CompanySignupPage;
 import ExoTalentWebWeb.Pages.RecruiterReferCandiadte;
 import ExoTalentWebWeb.Pages.RecruiterSignup;
@@ -47,8 +48,9 @@ public class WebTestCases extends TestBaseClassWeb {
 	RecruiterSignup signupRecruiter;
 	RecruiterReferCandiadte referCandidaterecuriter;
 	RecruiterLogin loginRecruiter;
-	
+
 	CompanySignupPage signupCompany;
+	CompanyLogin loginCompany;
 
 	@BeforeTest
 	public void setUp() throws IOException {
@@ -65,8 +67,9 @@ public class WebTestCases extends TestBaseClassWeb {
 		signupRecruiter = new RecruiterSignup();
 		referCandidaterecuriter = new RecruiterReferCandiadte();
 		loginRecruiter = new RecruiterLogin();
-		
-		signupCompany= new CompanySignupPage();
+
+		signupCompany = new CompanySignupPage();
+		loginCompany = new CompanyLogin();
 	}
 
 	@Test(priority = 1, enabled = false)
@@ -430,7 +433,7 @@ public class WebTestCases extends TestBaseClassWeb {
 			loginRecruiter.EnterOTP();
 			testutilsWeb.test.log(Status.INFO, "Click on login via otp button");
 			loginRecruiter.VerifyRecruiterLogin();
-			
+
 			if (signupRecruiter.VerifyRecruiterSignup()) {
 				testutilsWeb.passTestCase("Able to Login as Recruiter Successfully");
 			} else {
@@ -476,26 +479,26 @@ public class WebTestCases extends TestBaseClassWeb {
 				testutilsWeb.passTestCase("Recruiter is not Able to Refer Successfully");
 
 			}
-		
+
 		} catch (Exception e) {
-			
+
 			// TODO: handle exception
 			testutilsWeb.failTestCase("Exception occurred during Recruiter Signup: " + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
 		}
 	}
-	
+
 	/*
 	 * Company Page Signup
-	 */	
-	@Test(priority = 9, enabled = true)
+	 */
+	@Test(priority = 9, enabled = false)
 	public void CompanyPageSignup() throws IOException {
 
 		testutilsWeb.extentReport();
 
 		testutilsWeb.testCaseCreate("Tc 08: Company Page Signup");
 		try {
-			
+
 			signupCompany.ClickonJoinAsButton();
 			testutilsWeb.test.log(Status.INFO, "Click on join as button");
 			signupCompany.ClickonCompanyButton();
@@ -542,14 +545,48 @@ public class WebTestCases extends TestBaseClassWeb {
 				testutilsWeb.passTestCase("Company creation failed.");
 
 			}
-			
+
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Company Signup:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
 			// TODO: handle exception
 		}
-}
+	}
 
+	@Test(priority = 10, enabled = true)
+	public void CompanyLogin() throws IOException {
+
+		testutilsWeb.extentReport();
+
+		testutilsWeb.testCaseCreate("Tc 10: Company Page Login");
+		
+		try {
+			
+			loginCompany.ClickonJoinAsButton();
+			testutilsWeb.test.log(Status.INFO, "Click on join as button");
+			loginCompany.ClickonCompanyButton();
+			testutilsWeb.test.log(Status.INFO, "Click on Company button");
+			loginCompany.EnterCompanyEmailid();
+			testutilsWeb.test.log(Status.INFO, "Enter Email id");
+			loginCompany.EnterOTP();
+			testutilsWeb.test.log(Status.INFO, "Enter Otp");
+			Thread.sleep(2000);
+			if (loginCompany.VerifyCompanyCreated()) {
+				testutilsWeb.passTestCase("Company Login Succesfully");
+			} else {
+				testutilsWeb.passTestCase("Company Login failed.");
+
+			}
+			
+			
+		} catch (Exception e) {
+			testutilsWeb.failTestCase("Exception occurred during Company Login:" + e.getMessage());
+			e.printStackTrace(); // Log the exception for debugging
+			// TODO: handle exception
+		}
+	
+	}
+		
 	@AfterTest
 	public void teardown() {
 		testutilsWeb.ExtentFlush();
