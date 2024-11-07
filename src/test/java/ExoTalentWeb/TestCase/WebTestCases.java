@@ -472,6 +472,7 @@ public class WebTestCases extends TestBaseClassWeb {
 
 			}
 			Thread.sleep(1000);
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			
 			// TODO: handle exception
@@ -479,6 +480,7 @@ public class WebTestCases extends TestBaseClassWeb {
 			e.printStackTrace(); // Log the exception for debugging
 		}
 	}
+	
 
 	@AfterTest
 	public void teardown() {
