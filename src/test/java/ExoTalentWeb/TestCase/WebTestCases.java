@@ -2,11 +2,14 @@ package ExoTalentWeb.TestCase;
 
 import java.awt.Robot;
 import java.io.IOException;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -88,6 +91,9 @@ public class WebTestCases extends TestBaseClassWeb {
 
 		try {
 
+			System.out
+					.println(org.openqa.selenium.remote.RemoteWebDriver.class.getPackage().getImplementationVersion());
+
 			loginCompany.ClickonJoinAsButton();
 			testutilsWeb.test.log(Status.INFO, "Click on join as button");
 			loginCompany.ClickonCompanyButton();
@@ -126,8 +132,10 @@ public class WebTestCases extends TestBaseClassWeb {
 			createJobCompany.ClickonCreateJobButton();
 
 			createJobCompany.UploadJD();
-			
-			Thread.sleep(15000);
+
+//			WebDriverWait wait = new WebDriverWait(driver, 15);  // Use integer timeout instead of Duration
+//			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Jd Extracted Successfully')]")));
+			Thread.sleep(17000);
 
 			createJobCompany.SelectFunction();
 
@@ -158,30 +166,28 @@ public class WebTestCases extends TestBaseClassWeb {
 		testutilsWeb.testCaseCreate("Tc 3: Company Page Assign Job");
 
 		try {
-			
+
 			AssignJobCompany.ClickonFirstJob();
-			
+
 			AssignJobCompany.ClickonThreeDot();
-			
+
 			AssignJobCompany.ClickonAssignJob();
-			
+
 			AssignJobCompany.SelectRecruiterID();
-			
+
 			AssignJobCompany.ClickonAssignButton();
-			
-			
+
 			try {
 				if (AssignJobCompany.VerifyJobAssign()) {
-					
+
 					testutilsWeb.passTestCase("Able to Assign Job Succesfully");
-					
+
 				}
-				
+
 			} catch (Exception e) {
 				testutilsWeb.passTestCase("Not Able to Assign Job Succesfully");
 				// TODO: handle exception
 			}
-			
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Company Job Assign:" + e.getMessage());
