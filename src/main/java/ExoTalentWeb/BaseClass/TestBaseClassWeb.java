@@ -44,6 +44,7 @@ public class TestBaseClassWeb {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions option = new ChromeOptions();
 			option.addArguments("--remote-allow-origins=*");
+//			option.addArguments("--force-device-scale-factor=0.8"); // 80% zoom
 //			option.setExperimentalOption("excludeSwithces", new String[] {"enable-automation"});
 			driver = new ChromeDriver(option);
 			System.out.println("Chrome browser initialized successfully");

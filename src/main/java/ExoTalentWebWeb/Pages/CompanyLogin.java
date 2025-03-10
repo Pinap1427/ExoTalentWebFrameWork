@@ -16,7 +16,7 @@ public class CompanyLogin extends TestBaseClassWeb {
 
 	ActionKeywords action = new ActionKeywords();
 
-	@FindBy(xpath = "//button[.='Join As']")
+	@FindBy(xpath = "//button[.='Login As']")
 	private WebElement joinasBtn;
 
 	public void ClickonJoinAsButton() {
@@ -38,7 +38,7 @@ public class CompanyLogin extends TestBaseClassWeb {
 	private WebElement LoginviaOTpBtn;
 
 	public void EnterCompanyEmailid() throws InterruptedException {
-		action.sendKeysElement(EmailidComp, "hrmayur4@aqm.com");
+		action.sendKeysElement(EmailidComp, "cr1@apmosys.com");
 		Thread.sleep(1000);
 		action.clickElement(LoginviaOTpBtn);
 	}
@@ -77,12 +77,12 @@ public class CompanyLogin extends TestBaseClassWeb {
 		Thread.sleep(500);
 		action.sendKeysElement(Enterotp6, "4");
 		Thread.sleep(500);
-		action.clickElement(verifyOTPBtn);
+//		action.clickElement(verifyOTPBtn);
 
 	}
 
-	@FindBy(xpath = "//h1[@class=\"text-xl text-expurple-800 font-semibold\"]")
-	private WebElement verifyCompanyDetails;
+	@FindBy(xpath = "//button[.='Logout']")
+	public WebElement verifyCompanyDetails;
 
 	@FindBy(xpath = "//button[.='Logout']")
 	private WebElement logoutBtn;
