@@ -127,8 +127,6 @@ public class WebTestCases extends TestBaseClassWeb {
 
 			createJobCompany.UploadJD();
 			
-			
-
 			Thread.sleep(15000);
 
 			createJobCompany.SelectFunction();
