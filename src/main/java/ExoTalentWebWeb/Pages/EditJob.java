@@ -22,6 +22,13 @@ public class EditJob extends TestBaseClassWeb {
 	ActionKeywords action = new ActionKeywords();
 ////////Edit Job/////
 
+	@FindBy(xpath = "//div[@class='w-fit self-start flex items-center justify-end gap-4']//button//*[name()='svg']")
+	private WebElement ThreeDotClk;
+
+	public void ClickonThreeDot() {
+		action.clickElement(ThreeDotClk);
+	}
+
 	@FindBy(xpath = "//button[.='Edit Job']")
 	private WebElement EditJobbtn;
 
@@ -32,15 +39,19 @@ public class EditJob extends TestBaseClassWeb {
 	@FindBy(xpath = "//input[@id=\"jobTitle\"]")
 	private WebElement JobTitle;
 
-	public void EnterJobTitle() {
+	public void EnterJobTitle() throws InterruptedException {
+		action.clearElement(JobTitle);
+		Thread.sleep(1000);
 		action.sendKeysElement(JobTitle, "Senior React Js Developer");
 	}
 
 	@FindBy(xpath = "//input[@id=\"companyName\"]")
 	private WebElement companyName;
 
-	public void EnterCompanyName() {
-		action.sendKeysElement(JobTitle, "LinkCXO");
+	public void EnterCompanyName() throws InterruptedException {
+		action.clearElement(companyName);
+		Thread.sleep(1000);
+		action.sendKeysElement(companyName, "LinkCXO");
 	}
 
 // div[contains(text(),'Full Time')]/following::div[1]
@@ -59,6 +70,9 @@ public class EditJob extends TestBaseClassWeb {
 	@FindBy(xpath = "//label[contains(text(),'Work Place Type')]/following::div[1]")
 	private WebElement ClickWorkPlaceType;
 
+	@FindBy(xpath = "//label[.='Location *']")
+	private WebElement sideclkLocation;
+
 	@FindBy(xpath = "//div[.='On-Site']")
 	private WebElement SelectWorkPlaceType;
 
@@ -66,9 +80,11 @@ public class EditJob extends TestBaseClassWeb {
 		action.clickElement(ClickWorkPlaceType);
 		Thread.sleep(1000);
 		action.clickElement(SelectWorkPlaceType);
+		Thread.sleep(1000);
+		action.clickElement(sideclkLocation);
 	}
 
-	@FindBy(xpath = "//label[contains(text(),'Work Place Type')]/following::div[1]")
+	@FindBy(xpath = "//label[contains(text(),'Location')]/following::div[1]")
 	private WebElement ClickLocation;
 
 	@FindBy(xpath = "//div[contains(@class, 'flex items-center justify-between')]//p[contains(text(), 'Aadityana')]")
@@ -137,7 +153,7 @@ public class EditJob extends TestBaseClassWeb {
 		action.clickElement(SelectMinSalary);
 	}
 
-	@FindBy(xpath = "//label[contains(text(),'Min Salary')]/following::div[1]")
+	@FindBy(xpath = "//label[contains(text(),'Max Salary')]/following::div[1]")
 	private WebElement ClickMAxSalary;
 
 	@FindBy(xpath = "//div[.='12 Lacs']")
@@ -164,7 +180,9 @@ public class EditJob extends TestBaseClassWeb {
 	@FindBy(xpath = "//label[contains(text(),'Job Description')]/following::textarea")
 	private WebElement JobDescription;
 
-	public void EditJobDescription() {
+	public void EditJobDescription() throws InterruptedException {
+		action.clearElement(JobDescription);
+		Thread.sleep(1000);
 		action.sendKeysElement(JobDescription, EditedDescription);
 	}
 
@@ -181,7 +199,5 @@ public class EditJob extends TestBaseClassWeb {
 	public Boolean VerifyEditedJob() {
 		return action.isDisplay(verifyEditJob);
 	}
-	
-	
 
 }

@@ -1,5 +1,6 @@
 package ExoTalentWeb.TestCase;
 
+import java.awt.AWTException;
 import java.awt.Robot;
 import java.io.IOException;
 import java.time.Duration;
@@ -32,6 +33,7 @@ import ExoTalentWebWeb.Pages.RecruiterSignup;
 import ExoTalentWebWeb.Pages.RecruiterLogin;
 import ExoTalentWebWeb.Pages.CompanyJobCreate;
 import ExoTalentWebWeb.Pages.CompanyAssignJob;
+import ExoTalentWebWeb.Pages.EditJob;
 
 public class WebTestCases extends TestBaseClassWeb {
 	public static WebDriver driver;
@@ -59,6 +61,7 @@ public class WebTestCases extends TestBaseClassWeb {
 	CompanyLogin loginCompany;
 	CompanyJobCreate createJobCompany;
 	CompanyAssignJob AssignJobCompany;
+	EditJob jobEdit;
 
 	@BeforeTest
 	public void setUp() throws IOException {
@@ -80,6 +83,7 @@ public class WebTestCases extends TestBaseClassWeb {
 		loginCompany = new CompanyLogin();
 		createJobCompany = new CompanyJobCreate();
 		AssignJobCompany = new CompanyAssignJob();
+		jobEdit = new EditJob();
 	}
 
 	@Test(priority = 1, enabled = true)
@@ -192,6 +196,62 @@ public class WebTestCases extends TestBaseClassWeb {
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Company Job Assign:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
+			// TODO: handle exception
+		}
+
+	}
+
+	@Test(priority = 4, enabled = true)
+	public void EditJob() throws IOException, InterruptedException, AWTException {
+
+		testutilsWeb.testCaseCreate("TC 4: Company Page Edit Job");
+
+		try {
+
+			jobEdit.ClickonThreeDot();
+			testutilsWeb.test.log(Status.INFO, "Click on three Dot");
+			jobEdit.ClickonEditJob();
+			testutilsWeb.test.log(Status.INFO, "Click on Edit Job");
+			jobEdit.EnterJobTitle();
+			testutilsWeb.test.log(Status.INFO, "Enter Job Title");
+			jobEdit.EnterCompanyName();
+			testutilsWeb.test.log(Status.INFO, "Enter Company Name");
+			jobEdit.SelectJobTypeFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Job Type From Dropdown");
+			jobEdit.SelectWorkPlaceTypeFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Workplace Type From Dropdown");
+			jobEdit.SelectLocationFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Location From Dropdown");
+			jobEdit.SelectFunctionFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Function From Dropdown");
+			jobEdit.SelectQualificationFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Qualification From Dropdown");
+			jobEdit.EnterNewSkill();
+			testutilsWeb.test.log(Status.INFO, "Add and Remove Skills");
+			jobEdit.SelectMinSalaryFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Minimum Salary From Dropdown");
+			jobEdit.SelectMAxSalaryFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Maximum Salary From Dropdown");
+			jobEdit.EditJobDescription();
+			testutilsWeb.test.log(Status.INFO, "Edit Job Description");
+			jobEdit.ClickonSaveButton();
+			testutilsWeb.test.log(Status.INFO, "Click on Save Button");
+			try {
+				if (jobEdit.VerifyEditedJob()) {
+
+					testutilsWeb.passTestCase("Able to Edit Job Succesfully");
+				}
+
+			} catch (Exception e) {
+
+				testutilsWeb.failTestCase("Not Able to Edit Job Succesfully");
+				// TODO: handle exception
+			}
+
+		} catch (Exception e) {
+			testutilsWeb.failTestCase("Exception occurred during Company Job Edit:" + e.getMessage());
+			e.printStackTrace(); // Log the exception for debugging
+			// TODO: handle exception
 			// TODO: handle exception
 		}
 
