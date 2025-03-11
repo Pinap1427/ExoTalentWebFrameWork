@@ -181,5 +181,7 @@ public class EditJob extends TestBaseClassWeb {
 	public Boolean VerifyEditedJob() {
 		return action.isDisplay(verifyEditJob);
 	}
+	
+	
 
 }
