@@ -98,6 +98,8 @@ public class CompanyJobCreate extends TestBaseClassWeb {
 
 	public boolean VerifyJobCreated() {
 		return action.isDisplay(VerifyJob);
+		
+
 
 	}
 
