@@ -42,7 +42,7 @@ public class CompanyAssignJob extends TestBaseClassWeb{
 	@FindBy(xpath = "(//div[@class=\"css-1up7coo\"])[2]")
 	private WebElement EmailidClk;
 
-	@FindBy(xpath = "//div[@id=\"react-select-13-option-1\"]")
+	@FindBy(xpath = "//p[.='rohan@apmosys.com']")
 	private WebElement selectRecr;
 
 	public void SelectRecruiterID() throws InterruptedException {

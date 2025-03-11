@@ -93,7 +93,7 @@ public class CompanyJobCreate extends TestBaseClassWeb {
 		action.clickElement(PostJobBtn);
 	}
 
-	@FindBy(xpath = "//div[.='Job Created Successfully']")
+	@FindBy(xpath = "(//h1[@class=\"text-lg text-black font-semibold line-clamp-2 self-start flex-1\"])[1]")
 	public WebElement VerifyJob;
 
 	public boolean VerifyJobCreated() {

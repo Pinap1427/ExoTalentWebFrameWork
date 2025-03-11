@@ -91,8 +91,8 @@ public class WebTestCases extends TestBaseClassWeb {
 
 		try {
 
-			System.out
-					.println(org.openqa.selenium.remote.RemoteWebDriver.class.getPackage().getImplementationVersion());
+//			System.out
+//					.println(org.openqa.selenium.remote.RemoteWebDriver.class.getPackage().getImplementationVersion());
 
 			loginCompany.ClickonJoinAsButton();
 			testutilsWeb.test.log(Status.INFO, "Click on join as button");
@@ -106,7 +106,7 @@ public class WebTestCases extends TestBaseClassWeb {
 			if (loginCompany.VerifyCompanyCreated()) {
 				testutilsWeb.passTestCase("Company Login Succesfully");
 			} else {
-				testutilsWeb.passTestCase("Company Login failed.");
+				testutilsWeb.failTestCase("Company Login failed.");
 
 			}
 
@@ -126,30 +126,30 @@ public class WebTestCases extends TestBaseClassWeb {
 		try {
 
 			createJobCompany.ClickonAtSOpen();
-
+			testutilsWeb.test.log(Status.INFO, "Click on ATs");
 			createJobCompany.ClickonJobBoard();
-
+			testutilsWeb.test.log(Status.INFO, "Click on Job board");
 			createJobCompany.ClickonCreateJobButton();
-
+			testutilsWeb.test.log(Status.INFO, "Click on create job");
 			createJobCompany.UploadJD();
-
+			testutilsWeb.test.log(Status.INFO, "Upload JD");
 //			WebDriverWait wait = new WebDriverWait(driver, 15);  // Use integer timeout instead of Duration
 //			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Jd Extracted Successfully')]")));
 			Thread.sleep(17000);
 
 			createJobCompany.SelectFunction();
-
+			testutilsWeb.test.log(Status.INFO, "Select Function from list");
 			createJobCompany.ScrollTillPostJob();
-
+			testutilsWeb.test.log(Status.INFO, "Scroll till Post Job");
 			createJobCompany.ClickonPostJobButton();
-
+			testutilsWeb.test.log(Status.INFO, "Click on Post Job Button");
 			try {
 				if (createJobCompany.VerifyJobCreated()) {
 					testutilsWeb.passTestCase("Able to Create Job Succesfully");
 				}
 			} catch (Exception e) {
 
-				testutilsWeb.passTestCase("Not Able to Create Job Succesfully");
+				testutilsWeb.failTestCase("Not Able to Create Job Succesfully");
 
 				// TODO: handle exception
 			}
@@ -168,15 +168,15 @@ public class WebTestCases extends TestBaseClassWeb {
 		try {
 
 			AssignJobCompany.ClickonFirstJob();
-
+			testutilsWeb.test.log(Status.INFO, "Click on First Job in The List");
 			AssignJobCompany.ClickonThreeDot();
-
+			testutilsWeb.test.log(Status.INFO, "Click on Three Dot");
 			AssignJobCompany.ClickonAssignJob();
-
+			testutilsWeb.test.log(Status.INFO, "Click on Assign Job");
 			AssignJobCompany.SelectRecruiterID();
-
+			testutilsWeb.test.log(Status.INFO, "Select Recruiter Email id from list");
 			AssignJobCompany.ClickonAssignButton();
-
+			testutilsWeb.test.log(Status.INFO, "Click on ASsign Button");
 			try {
 				if (AssignJobCompany.VerifyJobAssign()) {
 
@@ -185,7 +185,7 @@ public class WebTestCases extends TestBaseClassWeb {
 				}
 
 			} catch (Exception e) {
-				testutilsWeb.passTestCase("Not Able to Assign Job Succesfully");
+				testutilsWeb.failTestCase("Not Able to Assign Job Succesfully");
 				// TODO: handle exception
 			}
 
