@@ -1,5 +1,10 @@
 package ExoTalentWebWeb.Pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -7,16 +12,15 @@ import org.openqa.selenium.support.PageFactory;
 import ExoTalentWeb.BaseClass.TestBaseClassWeb;
 import ExoTalentWeb.Utils.ActionKeywords;
 
-public class CompanyAssignJob extends TestBaseClassWeb{
-	
+public class CompanyAssignJob extends TestBaseClassWeb {
+
 	public CompanyAssignJob() {
 		super();
 		PageFactory.initElements(driver, this);
 	}
 
 	ActionKeywords action = new ActionKeywords();
-	
-	
+
 	@FindBy(xpath = "(//h1[@class=\"text-lg text-black font-semibold line-clamp-2 self-start flex-1\"])[1]")
 	private WebElement firstJobClk;
 
@@ -61,9 +65,8 @@ public class CompanyAssignJob extends TestBaseClassWeb{
 
 	@FindBy(xpath = "(//p[@class=\"self-start text-exgray-200 text-base\"])[last()]")
 	public WebElement VerifyJobAssgn;
-	
-	public boolean VerifyJobAssign()
-	{
+
+	public boolean VerifyJobAssign() {
 		return action.isDisplay(VerifyJobAssgn);
 	}
 
