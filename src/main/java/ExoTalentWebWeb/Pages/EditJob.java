@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -193,11 +194,13 @@ public class EditJob extends TestBaseClassWeb {
 		action.clickElement(SaveBtn);
 	}
 
-	@FindBy(xpath = "//h1[@class=\"text-lg text-exgray-800 font-semibold\"]")
+	@FindBy(xpath = "//h1[@class=\"text-lg text-exgray-800 font-semibold cursor-pointer\"]")
 	private WebElement verifyEditJob;
 
 	public Boolean VerifyEditedJob() {
 		return action.isDisplay(verifyEditJob);
 	}
 
+	
+	
 }
