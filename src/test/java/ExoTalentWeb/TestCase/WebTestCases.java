@@ -22,6 +22,7 @@ import ExoTalentWeb.BaseClass.TestBaseClassWeb;
 import ExoTalentWeb.Utils.ActionKeywords;
 import ExoTalentWeb.Utils.TestUtilsWeb;
 import ExoTalentWebWeb.Pages.WebLoginWithMobileNumber;
+import ExoTalentWebWeb.Pages.Adviserflow;
 import ExoTalentWebWeb.Pages.CandidateApplyJob;
 import ExoTalentWebWeb.Pages.CandidateSaveandUnsaveJob;
 import ExoTalentWebWeb.Pages.CandidateSignup;
@@ -64,6 +65,7 @@ public class WebTestCases extends TestBaseClassWeb {
 	CompanyAssignJob AssignJobCompany;
 	EditJob jobEdit;
 	CanidateReferManually candidatereferman;
+	Adviserflow advflow;
 
 	@BeforeTest
 	public void setUp() throws IOException {
@@ -88,6 +90,8 @@ public class WebTestCases extends TestBaseClassWeb {
 		jobEdit = new EditJob();
 
 		candidatereferman = new CanidateReferManually();
+
+		advflow = new Adviserflow();
 	}
 
 	@Test(priority = 1, enabled = true)
@@ -292,10 +296,67 @@ public class WebTestCases extends TestBaseClassWeb {
 
 		} catch (Exception e) {
 
-			testutilsWeb.failTestCase("Exception occurred during Company Job Edit:" + e.getMessage());
+			testutilsWeb.failTestCase("Exception occurred during Refer Candidate:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
 		}
 
+	}
+
+	@Test(priority = 6, enabled = true)
+
+	public void AssignCandidatetoAdviser() throws IOException, InterruptedException, AWTException {
+
+		testutilsWeb.testCaseCreate("TC 6: Company - Refer Candidate to Job");
+	try {
+		
+		advflow.ClickonCheckBox();
+		testutilsWeb.test.log(Status.INFO, "Click on Checkbox");
+		advflow.ClickonSelectAction();
+		testutilsWeb.test.log(Status.INFO, "Click on Select Action");
+		advflow.ClickonAssigntoAdviser();
+		testutilsWeb.test.log(Status.INFO, "Click on Assign To Adviser");
+		advflow.SelectAdviser();
+		testutilsWeb.test.log(Status.INFO, "Select Adviser");	
+		advflow.EnterAdviserID();
+		testutilsWeb.test.log(Status.INFO, "Enter Adviser Emailid");
+		advflow.EnterAdviserOTP();
+		testutilsWeb.test.log(Status.INFO, "Enter Adviser OTP");
+		advflow.ClickonJobBoard();
+		testutilsWeb.test.log(Status.INFO, "Click on Job Board");
+		advflow.adviserClickonJob();
+		testutilsWeb.test.log(Status.INFO, "Click on First Job");	
+		advflow.SelectActionAdviser();
+		testutilsWeb.test.log(Status.INFO, "Select Adviser Action");
+		advflow.ClickonApprove();
+		testutilsWeb.test.log(Status.INFO, "Click on Approve");	
+		advflow.VerifyAdviserStatus();
+		testutilsWeb.test.log(Status.INFO, "Verify Adviser Status");
+		Thread.sleep(3000);
+		advflow.LoginasCompany();
+		testutilsWeb.test.log(Status.INFO, "Login as Company");
+		advflow.EnterCompanyEmailid();
+		testutilsWeb.test.log(Status.INFO, "Enter Company Email id");	
+		advflow.EnterOTP();
+		testutilsWeb.test.log(Status.INFO, "Enter OTP");
+		
+		
+		try {
+			if (advflow.VerifyAdviserStatusinCompany()) {
+				
+				testutilsWeb.passTestCase("Able to Refer Candidate in Job Succesfully");
+			}
+			
+		}catch (Exception e) {
+			
+			testutilsWeb.failTestCase("Not Able to Refer Candidate in Job Succesfully");
+			// TODO: handle exception
+		}
+		
+	}catch (Exception e) {
+		testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
+		e.printStackTrace(); // Log the exception for debugging
+		// TODO: handle exception
+	}
 	}
 
 	@AfterTest

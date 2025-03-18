@@ -63,4 +63,5 @@ public class CanidateReferManually extends TestBaseClassWeb {
 		return action.isDisplay(VerifyCandidateRefer);
 	}
 
+	
 }
