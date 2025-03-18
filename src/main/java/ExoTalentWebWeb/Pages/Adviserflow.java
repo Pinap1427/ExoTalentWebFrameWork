@@ -1,5 +1,10 @@
 package ExoTalentWebWeb.Pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -154,6 +159,18 @@ public class Adviserflow extends TestBaseClassWeb {
 //		Thread.sleep(3000);
 //		action.clickElement(SelectApprove);
 	}
+	
+	
+	
+	public void ClickonReject() throws InterruptedException {
+		action.clickElement(SelectAction);
+		Thread.sleep(3000);
+		action.clickElement(SelectApprove);
+		Thread.sleep(3000);
+//		action.clickElement(SelectAction);
+//		Thread.sleep(3000);
+//		action.clickElement(SelectApprove);
+	}
 
 	@FindBy(xpath = "//button[.='Advisor Approved']")
 	private WebElement verifyAdviser;
@@ -228,4 +245,88 @@ public class Adviserflow extends TestBaseClassWeb {
 	public boolean VerifyAdviserStatusinCompany() {
 		return action.isDisplay(verifyAdviserinCompany);
 	}
+	
+//	candidate move Forward and status change
+	
+
+	@FindBy(xpath = "//button[.='Tagged List']")
+	private WebElement TaggedList;
+	public void ClickonTaggedList()
+	{
+		action.clickElement(TaggedList);
+	}
+	@FindBy(xpath = "(//div[@class=\"rotate-90 \"])[1]")
+	private WebElement threeDotMenu;
+	public void ClickonThreeDot()
+	{
+		action.clickElement(threeDotMenu);
+	}
+	//
+	
+
+	@FindBy(xpath = "//button[.='Move Forward']")
+	private WebElement MoveForwardBtn;
+	public void ClickonMoveForward()
+	{
+		action.clickElement(MoveForwardBtn);
+	}
+	
+	
+	
+	public boolean VerifyMoveForward()
+	{
+		return action.isDisplay(VerifyColumnName);
+	}
+	
+	//////Edit Column Name/////
+	
+	@FindBy(xpath = "(//button[@class=\"active:scale-95\"])[2]")
+	private WebElement EditColClk;
+	public void clickonEditColumn()
+	{
+		action.clickElement(EditColClk);
+	}
+	
+	@FindBy(xpath = "//input[@placeholder=\"Column Name\"]")
+	private WebElement ColumnName;
+	public void EditColumnName() throws InterruptedException, AWTException
+	{
+		action.clearElement(ColumnName);
+		Thread.sleep(1000);
+		action.sendKeysElement(ColumnName, "Interview Round 2");
+		Robot rb= new Robot();
+		Thread.sleep(1000);
+		rb.keyPress(KeyEvent.VK_ENTER);
+				
+		
+	}
+	
+	public boolean VerifyColumnNameEdited()
+	{
+		return action.isDisplay(VerifyColumnName);
+	}
+	
+	@FindBy(xpath = "//button[.='+ Add Columns']")
+	private WebElement AddColumn;
+	public void ClickonAddColumn()
+	{
+		action.clickElement(AddColumn);
+	}
+	
+	public void EnterNewColumnname() throws AWTException, InterruptedException
+	{
+		action.sendKeysElement(ColumnName, "Final Round");
+		Robot rb= new Robot();
+		Thread.sleep(1000);
+		rb.keyPress(KeyEvent.VK_ENTER);
+	}
+	
+	@FindBy(xpath = "(//div[@class=\"flex items-center justify-between bg-exwhite-100 border-b-2 border-b-secondary-400 px-4 py-1 rounded-t-md\"])[2]")
+	private WebElement VerifyColumnName;
+
+	public boolean VerifyColumnAdded()
+	{
+		return action.isDisplay(VerifyColumnName);
+	}
+	
 }

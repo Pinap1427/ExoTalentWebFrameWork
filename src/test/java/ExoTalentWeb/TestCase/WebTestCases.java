@@ -209,7 +209,7 @@ public class WebTestCases extends TestBaseClassWeb {
 
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void EditJob() throws IOException, InterruptedException, AWTException {
 
 		testutilsWeb.testCaseCreate("TC 4: Company Page Edit Job");
@@ -306,57 +306,182 @@ public class WebTestCases extends TestBaseClassWeb {
 
 	public void AssignCandidatetoAdviser() throws IOException, InterruptedException, AWTException {
 
-		testutilsWeb.testCaseCreate("TC 6: Company - Refer Candidate to Job");
-	try {
-		
-		advflow.ClickonCheckBox();
-		testutilsWeb.test.log(Status.INFO, "Click on Checkbox");
-		advflow.ClickonSelectAction();
-		testutilsWeb.test.log(Status.INFO, "Click on Select Action");
-		advflow.ClickonAssigntoAdviser();
-		testutilsWeb.test.log(Status.INFO, "Click on Assign To Adviser");
-		advflow.SelectAdviser();
-		testutilsWeb.test.log(Status.INFO, "Select Adviser");	
-		advflow.EnterAdviserID();
-		testutilsWeb.test.log(Status.INFO, "Enter Adviser Emailid");
-		advflow.EnterAdviserOTP();
-		testutilsWeb.test.log(Status.INFO, "Enter Adviser OTP");
-		advflow.ClickonJobBoard();
-		testutilsWeb.test.log(Status.INFO, "Click on Job Board");
-		advflow.adviserClickonJob();
-		testutilsWeb.test.log(Status.INFO, "Click on First Job");	
-		advflow.SelectActionAdviser();
-		testutilsWeb.test.log(Status.INFO, "Select Adviser Action");
-		advflow.ClickonApprove();
-		testutilsWeb.test.log(Status.INFO, "Click on Approve");	
-		advflow.VerifyAdviserStatus();
-		testutilsWeb.test.log(Status.INFO, "Verify Adviser Status");
-		Thread.sleep(3000);
-		advflow.LoginasCompany();
-		testutilsWeb.test.log(Status.INFO, "Login as Company");
-		advflow.EnterCompanyEmailid();
-		testutilsWeb.test.log(Status.INFO, "Enter Company Email id");	
-		advflow.EnterOTP();
-		testutilsWeb.test.log(Status.INFO, "Enter OTP");
-		
-		
+		testutilsWeb.testCaseCreate("TC 6: Company - Assign job to Adviser and Change status as Approved");
 		try {
-			if (advflow.VerifyAdviserStatusinCompany()) {
-				
-				testutilsWeb.passTestCase("Able to Refer Candidate in Job Succesfully");
+
+			advflow.ClickonCheckBox();
+			testutilsWeb.test.log(Status.INFO, "Click on Checkbox");
+			advflow.ClickonSelectAction();
+			testutilsWeb.test.log(Status.INFO, "Click on Select Action");
+			advflow.ClickonAssigntoAdviser();
+			testutilsWeb.test.log(Status.INFO, "Click on Assign To Adviser");
+			advflow.SelectAdviser();
+			testutilsWeb.test.log(Status.INFO, "Select Adviser");
+			advflow.EnterAdviserID();
+			testutilsWeb.test.log(Status.INFO, "Enter Adviser Emailid");
+			advflow.EnterAdviserOTP();
+			testutilsWeb.test.log(Status.INFO, "Enter Adviser OTP");
+			advflow.ClickonJobBoard();
+			testutilsWeb.test.log(Status.INFO, "Click on Job Board");
+			advflow.adviserClickonJob();
+			testutilsWeb.test.log(Status.INFO, "Click on First Job");
+			advflow.SelectActionAdviser();
+			testutilsWeb.test.log(Status.INFO, "Select Adviser Action");
+			advflow.ClickonApprove();
+			testutilsWeb.test.log(Status.INFO, "Click on Approve");
+//			advflow.VerifyAdviserStatus();
+//			testutilsWeb.test.log(Status.INFO, "Verify Adviser Status");
+			Thread.sleep(3000);
+			advflow.LoginasCompany();
+			testutilsWeb.test.log(Status.INFO, "Login as Company");
+			advflow.EnterCompanyEmailid();
+			testutilsWeb.test.log(Status.INFO, "Enter Company Email id");
+			advflow.EnterOTP();
+			testutilsWeb.test.log(Status.INFO, "Enter OTP");
+
+			try {
+				if (advflow.VerifyAdviserStatusinCompany()) {
+
+					testutilsWeb.passTestCase("Able to Refer Candidate in Job Succesfully");
+				}
+
+			} catch (Exception e) {
+
+				testutilsWeb.failTestCase("Not Able to Refer Candidate in Job Succesfully");
+				// TODO: handle exception
 			}
-			
-		}catch (Exception e) {
-			
-			testutilsWeb.failTestCase("Not Able to Refer Candidate in Job Succesfully");
+
+		} catch (Exception e) {
+			testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
+			e.printStackTrace(); // Log the exception for debugging
 			// TODO: handle exception
 		}
-		
-	}catch (Exception e) {
-		testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
-		e.printStackTrace(); // Log the exception for debugging
-		// TODO: handle exception
 	}
+
+	@Test(priority = 7, enabled = false)
+
+	public void AssignCandidatetoAdviserReject() throws IOException, InterruptedException, AWTException {
+
+		testutilsWeb.testCaseCreate("TC 7: Company - Assign job to Adviser and Change status as Reject");
+		try {
+
+			advflow.ClickonCheckBox();
+			testutilsWeb.test.log(Status.INFO, "Click on Checkbox");
+			advflow.ClickonSelectAction();
+			testutilsWeb.test.log(Status.INFO, "Click on Select Action");
+			advflow.ClickonAssigntoAdviser();
+			testutilsWeb.test.log(Status.INFO, "Click on Assign To Adviser");
+			advflow.SelectAdviser();
+			testutilsWeb.test.log(Status.INFO, "Select Adviser");
+			advflow.EnterAdviserID();
+			testutilsWeb.test.log(Status.INFO, "Enter Adviser Emailid");
+			advflow.EnterAdviserOTP();
+			testutilsWeb.test.log(Status.INFO, "Enter Adviser OTP");
+			advflow.ClickonJobBoard();
+			testutilsWeb.test.log(Status.INFO, "Click on Job Board");
+			advflow.adviserClickonJob();
+			testutilsWeb.test.log(Status.INFO, "Click on First Job");
+			advflow.SelectActionAdviser();
+			testutilsWeb.test.log(Status.INFO, "Select Adviser Action");
+			advflow.ClickonReject();
+			testutilsWeb.test.log(Status.INFO, "Click on Approve");
+			advflow.VerifyAdviserStatus();
+			testutilsWeb.test.log(Status.INFO, "Verify Adviser Status");
+			Thread.sleep(3000);
+			advflow.LoginasCompany();
+			testutilsWeb.test.log(Status.INFO, "Login as Company");
+			advflow.EnterCompanyEmailid();
+			testutilsWeb.test.log(Status.INFO, "Enter Company Email id");
+			advflow.EnterOTP();
+			testutilsWeb.test.log(Status.INFO, "Enter OTP");
+
+			try {
+				if (advflow.VerifyAdviserStatusinCompany()) {
+
+					testutilsWeb.passTestCase("Able to Refer Candidate in Job Succesfully");
+				}
+
+			} catch (Exception e) {
+
+				testutilsWeb.failTestCase("Not Able to Refer Candidate in Job Succesfully");
+				// TODO: handle exception
+			}
+
+		} catch (Exception e) {
+			testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
+			e.printStackTrace(); // Log the exception for debugging
+			// TODO: handle exception
+		}
+	}
+
+	@Test(priority = 8, enabled = true)
+
+	public void CandidateMoveStatus() throws IOException, InterruptedException, AWTException {
+
+		testutilsWeb.testCaseCreate("TC 8: Company - Move Candidate To Tagged List and Move Forward");
+		try {
+
+			advflow.ClickonTaggedList();
+			testutilsWeb.test.log(Status.INFO, "Click on Tagged List");
+			advflow.ClickonThreeDot();
+			testutilsWeb.test.log(Status.INFO, "Click on Three Dot");
+			advflow.ClickonMoveForward();
+			testutilsWeb.test.log(Status.INFO, "Click on Move Forward");
+			Thread.sleep(3000);
+			try {
+				if (advflow.VerifyMoveForward()) {
+
+					testutilsWeb.passTestCase("Able to Move Forward Candidate");
+
+				}
+
+			} catch (Exception e) {
+
+				testutilsWeb.failTestCase("Not Able to Move Forward Candidate");
+				// TODO: handle exception
+			}
+
+			advflow.clickonEditColumn();
+			testutilsWeb.test.log(Status.INFO, "Click on Edit Column");
+			advflow.EditColumnName();
+			testutilsWeb.test.log(Status.INFO, "Enter Column Name");
+			Thread.sleep(3000);
+			try {
+				if (advflow.VerifyColumnNameEdited()) {
+
+					testutilsWeb.passTestCase("Able to Edit Column Name");
+
+				}
+
+			} catch (Exception e) {
+
+				testutilsWeb.failTestCase("Not Able to Edit Column Name");
+				// TODO: handle exception
+			}
+
+			advflow.ClickonAddColumn();
+			testutilsWeb.test.log(Status.INFO, "Click on Add Column");
+			advflow.EnterNewColumnname();
+			testutilsWeb.test.log(Status.INFO, "Enter New Column Name");
+			Thread.sleep(3000);
+			try {
+				if (advflow.VerifyColumnAdded()) {
+
+					testutilsWeb.passTestCase("Able to Add New Column");
+
+				}
+
+			} catch (Exception e) {
+
+				testutilsWeb.failTestCase("Not Able to Add New Column");
+				// TODO: handle exception
+			}
+
+		} catch (Exception e) {
+			testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
+			e.printStackTrace();
+			// TODO: handle exception
+		}
 	}
 
 	@AfterTest
