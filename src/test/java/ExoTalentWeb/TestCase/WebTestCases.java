@@ -358,13 +358,22 @@ public class WebTestCases extends TestBaseClassWeb {
 		}
 	}
 
-	@Test(priority = 7, enabled = false)
+	@Test(priority = 7, enabled = true)
 
 	public void AssignCandidatetoAdviserReject() throws IOException, InterruptedException, AWTException {
 
 		testutilsWeb.testCaseCreate("TC 7: Company - Assign job to Adviser and Change status as Reject");
 		try {
 
+			candidatereferman.ClickonAddCandidate();
+			testutilsWeb.test.log(Status.INFO, "Click on Add Candidate Button");
+			candidatereferman.EneterCandidateEmailid1();
+			testutilsWeb.test.log(Status.INFO, "Enter Candidate Email id ");
+			candidatereferman.ScrollTillClearBtn();
+			testutilsWeb.test.log(Status.INFO, "Scroll till Clear Button");
+			candidatereferman.ClickonReferButton();
+			testutilsWeb.test.log(Status.INFO, "Click on Refer Button");
+			Thread.sleep(1000);
 			advflow.ClickonCheckBox();
 			testutilsWeb.test.log(Status.INFO, "Click on Checkbox");
 			advflow.ClickonSelectAction();
@@ -384,9 +393,9 @@ public class WebTestCases extends TestBaseClassWeb {
 			advflow.SelectActionAdviser();
 			testutilsWeb.test.log(Status.INFO, "Select Adviser Action");
 			advflow.ClickonReject();
-			testutilsWeb.test.log(Status.INFO, "Click on Approve");
-			advflow.VerifyAdviserStatus();
-			testutilsWeb.test.log(Status.INFO, "Verify Adviser Status");
+			testutilsWeb.test.log(Status.INFO, "Click on Reject");
+//			advflow.VerifyAdviserStatus();
+//			testutilsWeb.test.log(Status.INFO, "Verify Adviser Status");
 			Thread.sleep(3000);
 			advflow.LoginasCompany();
 			testutilsWeb.test.log(Status.INFO, "Login as Company");
@@ -396,14 +405,14 @@ public class WebTestCases extends TestBaseClassWeb {
 			testutilsWeb.test.log(Status.INFO, "Enter OTP");
 
 			try {
-				if (advflow.VerifyAdviserStatusinCompany()) {
+				if (advflow.VerifyAdviserStatusasRejectinCompany()) {
 
-					testutilsWeb.passTestCase("Able to Refer Candidate in Job Succesfully");
+					testutilsWeb.passTestCase("Able to Change Candidate status as Rejected adviser flow");
 				}
 
 			} catch (Exception e) {
 
-				testutilsWeb.failTestCase("Not Able to Refer Candidate in Job Succesfully");
+				testutilsWeb.failTestCase("Not Able to Change Candidate status as Rejected adviser flow");
 				// TODO: handle exception
 			}
 
@@ -414,7 +423,7 @@ public class WebTestCases extends TestBaseClassWeb {
 		}
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 
 	public void CandidateMoveStatus() throws IOException, InterruptedException, AWTException {
 

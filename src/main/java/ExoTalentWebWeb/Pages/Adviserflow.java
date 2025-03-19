@@ -150,6 +150,9 @@ public class Adviserflow extends TestBaseClassWeb {
 	@FindBy(xpath = "//button[.='Approve']")
 	private WebElement SelectApprove;
 
+	@FindBy(xpath = "//button[.='Reject']")
+	private WebElement SelectReject;
+	
 	public void ClickonApprove() throws InterruptedException {
 		action.clickElement(SelectAction);
 		Thread.sleep(3000);
@@ -165,7 +168,7 @@ public class Adviserflow extends TestBaseClassWeb {
 	public void ClickonReject() throws InterruptedException {
 		action.clickElement(SelectAction);
 		Thread.sleep(3000);
-		action.clickElement(SelectApprove);
+		action.clickElement(SelectReject);
 		Thread.sleep(3000);
 //		action.clickElement(SelectAction);
 //		Thread.sleep(3000);
@@ -247,7 +250,12 @@ public class Adviserflow extends TestBaseClassWeb {
 	}
 	
 //	candidate move Forward and status change
-	
+	@FindBy(xpath = "//h1[.='Rejected']")
+	private WebElement verifyAdviserRejectinCompany;
+
+	public boolean VerifyAdviserStatusasRejectinCompany() {
+		return action.isDisplay(verifyAdviserRejectinCompany);
+	}
 
 	@FindBy(xpath = "//button[.='Tagged List']")
 	private WebElement TaggedList;

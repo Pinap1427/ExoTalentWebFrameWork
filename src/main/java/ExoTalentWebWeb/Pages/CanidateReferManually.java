@@ -38,6 +38,12 @@ public class CanidateReferManually extends TestBaseClassWeb {
 		Thread.sleep(1000);
 		action.clickElement(SearchEmail);
 	}
+	
+	public void EneterCandidateEmailid1() throws InterruptedException {
+		action.sendKeysElement(EnterCandiEmailID, "selmonbhoi111@tcs.com");
+		Thread.sleep(1000);
+		action.clickElement(SearchEmail);
+	}
 
 	@FindBy(xpath = "//button[text()=\"Clear\"]")
 	private WebElement ClearBtn;
