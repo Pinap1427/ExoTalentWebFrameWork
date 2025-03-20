@@ -37,7 +37,8 @@ import ExoTalentWebWeb.Pages.CompanyJobCreate;
 import ExoTalentWebWeb.Pages.CompanyAssignJob;
 import ExoTalentWebWeb.Pages.EditJob;
 
-public class WebTestCases extends TestBaseClassWeb {
+public
+class WebTestCases extends TestBaseClassWeb {
 	public static WebDriver driver;
 
 	@Override
@@ -145,9 +146,10 @@ public class WebTestCases extends TestBaseClassWeb {
 			testutilsWeb.test.log(Status.INFO, "Click on create job");
 			createJobCompany.UploadJD();
 			testutilsWeb.test.log(Status.INFO, "Upload JD");
-//			WebDriverWait wait = new WebDriverWait(driver, 15);  // Use integer timeout instead of Duration
-//			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Jd Extracted Successfully')]")));
-			Thread.sleep(17000);
+			WebDriverWait wait = new WebDriverWait(TestBaseClassWeb.driver, 15);  // Use integer timeout instead of Duration
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Jd Extracted Successfully')]")));
+			
+			//			Thread.sleep(20000);
 
 			createJobCompany.SelectFunction();
 			testutilsWeb.test.log(Status.INFO, "Select Function from list");
@@ -209,7 +211,7 @@ public class WebTestCases extends TestBaseClassWeb {
 
 	}
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void EditJob() throws IOException, InterruptedException, AWTException {
 
 		testutilsWeb.testCaseCreate("TC 4: Company Page Edit Job");
@@ -358,7 +360,7 @@ public class WebTestCases extends TestBaseClassWeb {
 		}
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 
 	public void AssignCandidatetoAdviserReject() throws IOException, InterruptedException, AWTException {
 

@@ -49,7 +49,7 @@ public class Adviserflow extends TestBaseClassWeb {
 	@FindBy(xpath = "(//div[@class=\"css-hlgwow\"])")
 	private WebElement AssignCandidate;
 
-	@FindBy(xpath = "(//div[@class=\"css-1ny18kj-option\"])[1]")
+	@FindBy(xpath = "//div[.='Vinayak Sagar - cinayak@ymail.com']")
 	private WebElement ASsignADv;
 
 	@FindBy(xpath = "(//button[.='Assign'])[2]")

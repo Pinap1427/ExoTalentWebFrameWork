@@ -41,9 +41,10 @@ public class EditJob extends TestBaseClassWeb {
 	private WebElement JobTitle;
 
 	public void EnterJobTitle() throws InterruptedException {
+		action.clickElement(JobTitle);
 		action.clearElement(JobTitle);
 		Thread.sleep(1000);
-		action.sendKeysElement(JobTitle, "New Senior React Js Developer");
+		action.sendKeysElement(JobTitle, "New Senior React Js Developer 2025");
 	}
 
 	@FindBy(xpath = "//input[@id=\"companyName\"]")
@@ -142,7 +143,7 @@ public class EditJob extends TestBaseClassWeb {
 		action.clickElement(RemoveSkill);
 	}
 
-	@FindBy(xpath = "//label[contains(text(),'Min Salary')]/following::div[1]")
+	@FindBy(xpath = "//h1[contains(text(),'Minimum Salary')]/following::div[1]/div/div")
 	private WebElement ClickMinSalary;
 
 	@FindBy(xpath = "//div[.='6']")
@@ -154,7 +155,7 @@ public class EditJob extends TestBaseClassWeb {
 		action.clickElement(SelectMinSalary);
 	}
 
-	@FindBy(xpath = "//label[contains(text(),'Max Salary')]/following::div[1]")
+	@FindBy(xpath = "//h1[contains(text(),'Maximum Salary')]/following::div[1]/div/div")
 	private WebElement ClickMAxSalary;
 
 	@FindBy(xpath = "//div[.='12']")
@@ -201,6 +202,4 @@ public class EditJob extends TestBaseClassWeb {
 		return action.isDisplay(verifyEditJob);
 	}
 
-	
-	
 }
