@@ -5,12 +5,9 @@
     <classes>
       <class name="ExoTalentWeb.TestCase.WebTestCases">
         <methods>
-          <include name="AssignCandidatetoAdviser"/>
-          <include name="EditJob"/>
-          <include name="CandidateReferbyManua"/>
+          <include name="CompanyLogin"/>
           <include name="setUp"/>
-          <include name="CompanyJobCreate"/>
-          <include name="CompanyAssignJob"/>
+          <include name="CandidateMoveStatus"/>
           <include name="teardown"/>
         </methods>
       </class> <!-- ExoTalentWeb.TestCase.WebTestCases -->

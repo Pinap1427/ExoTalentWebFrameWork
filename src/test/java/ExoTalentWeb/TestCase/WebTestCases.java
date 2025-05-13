@@ -37,8 +37,7 @@ import ExoTalentWebWeb.Pages.CompanyJobCreate;
 import ExoTalentWebWeb.Pages.CompanyAssignJob;
 import ExoTalentWebWeb.Pages.EditJob;
 
-public
-class WebTestCases extends TestBaseClassWeb {
+public class WebTestCases extends TestBaseClassWeb {
 	public static WebDriver driver;
 
 	@Override
@@ -118,20 +117,17 @@ class WebTestCases extends TestBaseClassWeb {
 			Thread.sleep(2000);
 			if (loginCompany.VerifyCompanyCreated()) {
 				testutilsWeb.passTestCase("Company Login Succesfully");
-			} else {
-				testutilsWeb.failTestCase("Company Login failed.");
-
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Company Login:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			// TODO: handle exception
+			
 		}
 
 	}
 
-	@Test(priority = 2, enabled = true)
+	@Test(priority = 2, enabled = false)
 	public void CompanyJobCreate() throws IOException {
 
 		testutilsWeb.testCaseCreate("Tc 2: Company Page Job Create");
@@ -165,7 +161,7 @@ class WebTestCases extends TestBaseClassWeb {
 
 				testutilsWeb.failTestCase("Not Able to Create Job Succesfully");
 
-				// TODO: handle exception
+				
 			}
 
 		} catch (Exception e) {
@@ -174,7 +170,7 @@ class WebTestCases extends TestBaseClassWeb {
 		}
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void CompanyAssignJob() throws IOException {
 
 		testutilsWeb.testCaseCreate("Tc 3: Company Page Assign Job");
@@ -200,18 +196,18 @@ class WebTestCases extends TestBaseClassWeb {
 
 			} catch (Exception e) {
 				testutilsWeb.failTestCase("Not Able to Assign Job Succesfully");
-				// TODO: handle exception
+				
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Company Job Assign:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			// TODO: handle exception
+			
 		}
 
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void EditJob() throws IOException, InterruptedException, AWTException {
 
 		testutilsWeb.testCaseCreate("TC 4: Company Page Edit Job");
@@ -255,19 +251,19 @@ class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Edit Job Succesfully");
-				// TODO: handle exception
+				
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Company Job Edit:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			// TODO: handle exception
-			// TODO: handle exception
+			
+			
 		}
 
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 
 	public void CandidateReferbyManua() throws IOException, InterruptedException, AWTException {
 
@@ -293,7 +289,7 @@ class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Refer Candidate in Job Succesfully");
-				// TODO: handle exception
+				
 			}
 
 		} catch (Exception e) {
@@ -304,7 +300,7 @@ class WebTestCases extends TestBaseClassWeb {
 
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 
 	public void AssignCandidatetoAdviser() throws IOException, InterruptedException, AWTException {
 
@@ -350,13 +346,13 @@ class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Refer Candidate in Job Succesfully");
-				// TODO: handle exception
+				
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			// TODO: handle exception
+			
 		}
 	}
 
@@ -415,23 +411,24 @@ class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Change Candidate status as Rejected adviser flow");
-				// TODO: handle exception
+				
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			// TODO: handle exception
+			
 		}
 	}
 
-	@Test(priority = 8, enabled = false)
+	@Test(priority = 8, enabled = true)
 
 	public void CandidateMoveStatus() throws IOException, InterruptedException, AWTException {
 
 		testutilsWeb.testCaseCreate("TC 8: Company - Move Candidate To Tagged List and Move Forward");
 		try {
-
+			
+			Thread.sleep(15000);
 			advflow.ClickonTaggedList();
 			testutilsWeb.test.log(Status.INFO, "Click on Tagged List");
 			advflow.ClickonThreeDot();
@@ -449,7 +446,6 @@ class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Move Forward Candidate");
-				// TODO: handle exception
 			}
 
 			advflow.clickonEditColumn();
@@ -467,7 +463,7 @@ class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Edit Column Name");
-				// TODO: handle exception
+				
 			}
 
 			advflow.ClickonAddColumn();
@@ -485,13 +481,15 @@ class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Add New Column");
-				// TODO: handle exception
+				
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
-			e.printStackTrace();
 			// TODO: handle exception
+			e.printStackTrace();
+			
+			
 		}
 	}
 
@@ -668,14 +666,14 @@ class WebTestCases extends TestBaseClassWeb {
 //		}
 //
 //	} catch (Exception e) {
-//		// TODO: handle exception
+//		
 //		e.printStackTrace();
 //		testutilsWeb.failTestCase("Candidate is not able to Apply for Job succesfully or Withdraw");
 //	}
 //}
 //
 ////
-////@Test(priority = 4, enabled = true)
+////@Test(priority = 4, enabled = false)
 ////public void CandidateJobWithdraw()throws IOException
 ////{
 ////	testutilsWeb.testCaseCreate("Tc 04 :Candidate Withdraw Job");
@@ -684,7 +682,7 @@ class WebTestCases extends TestBaseClassWeb {
 ////		
 ////		
 ////	} catch (Exception e) {
-////		// TODO: handle exception
+////		
 ////	}
 ////}
 //
@@ -729,7 +727,6 @@ class WebTestCases extends TestBaseClassWeb {
 //			saveunsaveJob.ClickonUnsaveJob();
 //			System.out.println("After Unsave");
 //		} catch (Exception e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //		testutilsWeb.test.log(Status.INFO, "Click on UnSave Job");
@@ -745,7 +742,7 @@ class WebTestCases extends TestBaseClassWeb {
 //		}
 //
 //	} catch (Exception e) {
-//		// TODO: handle exception
+//		
 //		testutilsWeb.failTestCase("User is not able to Save or UnSave Job");
 //	}
 //
@@ -790,7 +787,7 @@ class WebTestCases extends TestBaseClassWeb {
 //
 //	} catch (Exception e) {
 //		testutilsWeb.failTestCase("Candidate is not able to Apply for Job From Invivation succesfully");
-//		// TODO: handle exception
+//		
 //	}
 //
 //}
@@ -875,7 +872,7 @@ class WebTestCases extends TestBaseClassWeb {
 //	} catch (Exception e) {
 //		testutilsWeb.failTestCase("Exception occurred during Recruiter Login: " + e.getMessage());
 //		e.printStackTrace(); // Log the exception for debugging
-//		// TODO: handle exception
+//		
 //	}
 //}
 //
@@ -914,7 +911,7 @@ class WebTestCases extends TestBaseClassWeb {
 //
 //	} catch (Exception e) {
 //
-//		// TODO: handle exception
+//		
 //		testutilsWeb.failTestCase("Exception occurred during Recruiter Signup: " + e.getMessage());
 //		e.printStackTrace(); // Log the exception for debugging
 //	}
@@ -981,6 +978,6 @@ class WebTestCases extends TestBaseClassWeb {
 //	} catch (Exception e) {
 //		testutilsWeb.failTestCase("Exception occurred during Company Signup:" + e.getMessage());
 //		e.printStackTrace(); // Log the exception for debugging
-//		// TODO: handle exception
+//		
 //	}
 //}

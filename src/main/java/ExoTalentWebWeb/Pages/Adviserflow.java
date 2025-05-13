@@ -297,12 +297,34 @@ public class Adviserflow extends TestBaseClassWeb {
 	
 	@FindBy(xpath = "//input[@placeholder=\"Column Name\"]")
 	private WebElement ColumnName;
+	
+	@FindBy(xpath = "//input[@class=\"w-full pr-2 outline-none bg-transparent text-base text-primary-400 font-semibold\"]")
+	private WebElement ColumnName1;
 	public void EditColumnName() throws InterruptedException, AWTException
 	{
-		action.clearElement(ColumnName);
-		Thread.sleep(1000);
-		action.sendKeysElement(ColumnName, "Interview Round 2");
 		Robot rb= new Robot();
+		Thread.sleep(3000);
+//		for (int i = 0; i < 11; i++) {
+//		    rb.keyPress(KeyEvent.VK_BACK_SPACE);
+//		}
+		
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		rb.keyPress(KeyEvent.VK_BACK_SPACE);
+		
+//		action.clearElement(ColumnName1);
+		Thread.sleep(5000);
+		action.sendKeysElement(ColumnName1, "Interview Round 2");
+//		Robot rb= new Robot();
 		Thread.sleep(1000);
 		rb.keyPress(KeyEvent.VK_ENTER);
 				
