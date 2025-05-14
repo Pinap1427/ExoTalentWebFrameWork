@@ -5,6 +5,7 @@
     <classes>
       <class name="ExoTalentWeb.TestCase.WebTestCases">
         <methods>
+          <include name="PersonalInformation"/>
           <include name="CompanyLoginProduction"/>
           <include name="setUp"/>
           <include name="teardown"/>

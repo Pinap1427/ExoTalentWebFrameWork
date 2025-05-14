@@ -2,6 +2,7 @@ package ExoTalentWeb.Utils;
 
 import java.util.Set;
 
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -109,4 +110,42 @@ public class ActionKeywords{
 		select.selectByVisibleText(countryName);
 	}
 
+
+
+
+
+
+public void clickElement1(WebElement element) throws InterruptedException {
+    try {
+        element.click();  // normal click
+    } catch (ElementClickInterceptedException e) {
+        System.out.println("Click intercepted. Trying JavaScript click instead.");
+
+        // Scroll to element and offset for sticky headers
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(300); // let scroll settle
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -100);"); // header offset
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element); // JS click
+    } catch (Exception e) {
+        System.out.println("Click failed: " + e.getMessage());
+        throw e;
+    }
 }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

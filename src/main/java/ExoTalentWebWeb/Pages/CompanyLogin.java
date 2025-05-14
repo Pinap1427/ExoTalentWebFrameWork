@@ -39,11 +39,22 @@ public class CompanyLogin extends TestBaseClassWeb {
 	
 	String EmailidProd="mmore355@gmail.com";
 
-	public void EnterCompanyEmailid() throws InterruptedException {
-		action.sendKeysElement(EmailidComp, "cr1@apmosys.com");
+	public void EnterCompanyEmailid(String CompanyEmailid) throws InterruptedException {
+		action.sendKeysElement(EmailidComp, CompanyEmailid);
 		Thread.sleep(1000);
 		action.clickElement(LoginviaOTpBtn);
 	}
+	
+	
+	
+//	public void EnterJD(String JobDesc) {
+////		action.sendKeysElement(JdEnt, JD);
+////		action.sendKeysElement(JdEnt, DCMJd);
+//		//action.sendKeysElement(JdEnt, TestEngineerJD);
+//		
+////		action.sendKeysElement(JdEnt, DemoJD);
+//		 action.sendKeysElement(JdEnt, JobDesc);
+//	}
 	
 	public void EnterCompanyEmailidProd() throws InterruptedException {
 		action.sendKeysElement(EmailidComp, EmailidProd);

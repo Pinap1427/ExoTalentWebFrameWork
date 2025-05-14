@@ -60,15 +60,15 @@ public class CreateEmployee extends TestBaseClassWeb {
 	@FindBy(xpath = "//input[@id=\"firstName\"]")
 	private WebElement firstName;
 
-	public void EnterFirstName() {
-		action.sendKeysElement(firstName, "Akash");
+	public void EnterFirstName(String FirstName) {
+		action.sendKeysElement(firstName, FirstName);
 	}
 
 	@FindBy(xpath = "//input[@id=\"lastName\"]")
 	private WebElement lastName;
 
-	public void EnterlastName() {
-		action.sendKeysElement(lastName, "Kulkarni");
+	public void EnterlastName(String LastName) {
+		action.sendKeysElement(lastName, LastName);
 	}
 
 	@FindBy(xpath = "(//div[.='Select'])[1]")
@@ -100,15 +100,15 @@ public class CreateEmployee extends TestBaseClassWeb {
 	@FindBy(xpath = "//input[@id=\"emailId\"]")
 	private WebElement emailid;
 
-	public void EnterEmaild() {
-		action.sendKeysElement(emailid, "mmmmmaaaaa01@gmail.com");
+	public void EnterEmaild(String Email) {
+		action.sendKeysElement(emailid, Email);
 	}
 
 	@FindBy(xpath = "//input[@id=\"mobileNo\"]")
 	private WebElement Mobilenumber;
 
-	public void EnterMobilenumber() {
-		action.sendKeysElement(Mobilenumber, "9000000001");
+	public void EnterMobilenumber(String MobileNumber) {
+		action.sendKeysElement(Mobilenumber, MobileNumber);
 	}
 
 	@FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/form[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[2]")
@@ -152,7 +152,7 @@ public class CreateEmployee extends TestBaseClassWeb {
 	private WebElement EnterEmpCode;
 
 	public void EnterEmployeeCode() throws AWTException {
-		action.sendKeysElement(EnterEmpCode, "GMN000");
+		action.sendKeysElement(EnterEmpCode, "GMN0002");
 		
 	}
 
