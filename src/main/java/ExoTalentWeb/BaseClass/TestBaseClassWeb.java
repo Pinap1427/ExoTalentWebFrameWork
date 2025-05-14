@@ -26,7 +26,8 @@ public class TestBaseClassWeb {
 	public static WebDriverWait wait;
 
 	public void TestBaseClassWeb() throws IOException {
-		FileInputStream fs = new FileInputStream(System.getProperty("user.dir")+"/src/main/java/ExoTalentWebFrameWork/configure.propertief");
+		FileInputStream fs = new FileInputStream(
+				System.getProperty("user.dir") + "/src/main/java/ExoTalentWebFrameWork/configure.propertief");
 		prop = new Properties();
 		prop.load(fs);
 	}
@@ -44,6 +45,7 @@ public class TestBaseClassWeb {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions option = new ChromeOptions();
 			option.addArguments("--remote-allow-origins=*");
+//			option.addArguments("--force-device-scale-factor=0.8");
 //			option.addArguments("--force-device-scale-factor=0.8"); // 80% zoom
 //			option.setExperimentalOption("excludeSwithces", new String[] {"enable-automation"});
 			driver = new ChromeDriver(option);

@@ -5,10 +5,10 @@
     <classes>
       <class name="ExoTalentWeb.TestCase.WebTestCases">
         <methods>
-          <include name="CompanyLogin"/>
+          <include name="CompanyLoginProduction"/>
           <include name="setUp"/>
-          <include name="CandidateMoveStatus"/>
           <include name="teardown"/>
+          <include name="CreateEmployee"/>
         </methods>
       </class> <!-- ExoTalentWeb.TestCase.WebTestCases -->
     </classes>

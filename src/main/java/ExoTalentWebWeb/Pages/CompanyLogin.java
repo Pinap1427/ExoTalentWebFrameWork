@@ -36,13 +36,20 @@ public class CompanyLogin extends TestBaseClassWeb {
 	private WebElement EmailidComp;
 	@FindBy(xpath = "//button[.='Login Via OTP']")
 	private WebElement LoginviaOTpBtn;
+	
+	String EmailidProd="mmore355@gmail.com";
 
 	public void EnterCompanyEmailid() throws InterruptedException {
 		action.sendKeysElement(EmailidComp, "cr1@apmosys.com");
 		Thread.sleep(1000);
 		action.clickElement(LoginviaOTpBtn);
 	}
-
+	
+	public void EnterCompanyEmailidProd() throws InterruptedException {
+		action.sendKeysElement(EmailidComp, EmailidProd);
+		Thread.sleep(1000);
+		action.clickElement(LoginviaOTpBtn);
+	}
 	@FindBy(xpath = "//div[@class='w-full space-y-4']//input[1]")
 	private WebElement Enterotp1;
 

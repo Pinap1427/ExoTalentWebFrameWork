@@ -30,6 +30,7 @@ import ExoTalentWebWeb.Pages.CandidateWithdrawJob;
 import ExoTalentWebWeb.Pages.CanidateReferManually;
 import ExoTalentWebWeb.Pages.CompanyLogin;
 import ExoTalentWebWeb.Pages.CompanySignupPage;
+import ExoTalentWebWeb.Pages.CreateEmployee;
 import ExoTalentWebWeb.Pages.RecruiterReferCandiadte;
 import ExoTalentWebWeb.Pages.RecruiterSignup;
 import ExoTalentWebWeb.Pages.RecruiterLogin;
@@ -66,6 +67,7 @@ public class WebTestCases extends TestBaseClassWeb {
 	EditJob jobEdit;
 	CanidateReferManually candidatereferman;
 	Adviserflow advflow;
+	CreateEmployee empcreate;
 
 	@BeforeTest
 	public void setUp() throws IOException {
@@ -92,9 +94,11 @@ public class WebTestCases extends TestBaseClassWeb {
 		candidatereferman = new CanidateReferManually();
 
 		advflow = new Adviserflow();
+
+		empcreate = new CreateEmployee();
 	}
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void CompanyLogin() throws IOException {
 
 		testutilsWeb.extentReport();
@@ -122,7 +126,40 @@ public class WebTestCases extends TestBaseClassWeb {
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Company Login:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			
+
+		}
+
+	}
+
+	@Test(priority = 1, enabled = true)
+	public void CompanyLoginProduction() throws IOException {
+
+		testutilsWeb.extentReport();
+
+		testutilsWeb.testCaseCreate("Tc 1: Company Page Login");
+
+		try {
+
+//			System.out
+//					.println(org.openqa.selenium.remote.RemoteWebDriver.class.getPackage().getImplementationVersion());
+
+			loginCompany.ClickonJoinAsButton();
+			testutilsWeb.test.log(Status.INFO, "Click on join as button");
+			loginCompany.ClickonCompanyButton();
+			testutilsWeb.test.log(Status.INFO, "Click on Company button");
+			loginCompany.EnterCompanyEmailidProd();
+			testutilsWeb.test.log(Status.INFO, "Enter Email id");
+//			loginCompany.EnterOTP();
+//			testutilsWeb.test.log(Status.INFO, "Enter Otp");
+			Thread.sleep(20000);
+			if (loginCompany.VerifyCompanyCreated()) {
+				testutilsWeb.passTestCase("Company Login Succesfully");
+			}
+
+		} catch (Exception e) {
+			testutilsWeb.failTestCase("Exception occurred during Company Login:" + e.getMessage());
+			e.printStackTrace(); // Log the exception for debugging
+
 		}
 
 	}
@@ -142,10 +179,12 @@ public class WebTestCases extends TestBaseClassWeb {
 			testutilsWeb.test.log(Status.INFO, "Click on create job");
 			createJobCompany.UploadJD();
 			testutilsWeb.test.log(Status.INFO, "Upload JD");
-			WebDriverWait wait = new WebDriverWait(TestBaseClassWeb.driver, 15);  // Use integer timeout instead of Duration
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Jd Extracted Successfully')]")));
-			
-			//			Thread.sleep(20000);
+			WebDriverWait wait = new WebDriverWait(TestBaseClassWeb.driver, 15); // Use integer timeout instead of
+																					// Duration
+			wait.until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Jd Extracted Successfully')]")));
+
+			// Thread.sleep(20000);
 
 			createJobCompany.SelectFunction();
 			testutilsWeb.test.log(Status.INFO, "Select Function from list");
@@ -161,7 +200,6 @@ public class WebTestCases extends TestBaseClassWeb {
 
 				testutilsWeb.failTestCase("Not Able to Create Job Succesfully");
 
-				
 			}
 
 		} catch (Exception e) {
@@ -196,13 +234,13 @@ public class WebTestCases extends TestBaseClassWeb {
 
 			} catch (Exception e) {
 				testutilsWeb.failTestCase("Not Able to Assign Job Succesfully");
-				
+
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Company Job Assign:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			
+
 		}
 
 	}
@@ -251,14 +289,13 @@ public class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Edit Job Succesfully");
-				
+
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Company Job Edit:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			
-			
+
 		}
 
 	}
@@ -289,7 +326,7 @@ public class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Refer Candidate in Job Succesfully");
-				
+
 			}
 
 		} catch (Exception e) {
@@ -346,13 +383,13 @@ public class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Refer Candidate in Job Succesfully");
-				
+
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			
+
 		}
 	}
 
@@ -411,23 +448,23 @@ public class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Change Candidate status as Rejected adviser flow");
-				
+
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
-			
+
 		}
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = false)
 
 	public void CandidateMoveStatus() throws IOException, InterruptedException, AWTException {
 
 		testutilsWeb.testCaseCreate("TC 8: Company - Move Candidate To Tagged List and Move Forward");
 		try {
-			
+
 			Thread.sleep(15000);
 			advflow.ClickonTaggedList();
 			testutilsWeb.test.log(Status.INFO, "Click on Tagged List");
@@ -463,7 +500,7 @@ public class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Edit Column Name");
-				
+
 			}
 
 			advflow.ClickonAddColumn();
@@ -481,17 +518,95 @@ public class WebTestCases extends TestBaseClassWeb {
 			} catch (Exception e) {
 
 				testutilsWeb.failTestCase("Not Able to Add New Column");
-				
+
 			}
 
 		} catch (Exception e) {
 			testutilsWeb.failTestCase("Exception occurred during Adviser flow:" + e.getMessage());
-			// TODO: handle exception
 			e.printStackTrace();
-			
-			
+
 		}
 	}
+
+	@Test(priority = 2, enabled = true)
+
+	public void CreateEmployee() throws IOException {
+
+		testutilsWeb.testCaseCreate("Tc 2: Company Page Job Create");
+		try {
+
+			empcreate.ClickonCreateEmployee();
+			testutilsWeb.test.log(Status.INFO, "Click on Create Employee");
+			empcreate.ClickonSubmitButton();
+			testutilsWeb.test.log(Status.INFO, "Click on Submit Button");
+
+			if (empcreate.VerifyMandatoryFields()) {
+
+				testutilsWeb.passTestCase(
+						"User is able to Verify Mandatory Fields after Clicking on Submit Button Without entering any data");
+
+			} else {
+				testutilsWeb.failTestCase(
+						"User is not able to Verify Mandatory Fields after Clicking on Submit Button Without entering any data");
+			}
+
+			empcreate.EnterFirstName();
+			testutilsWeb.test.log(Status.INFO, "Enter First Name");
+			empcreate.EnterlastName();
+			testutilsWeb.test.log(Status.INFO, "Enter Last Name");
+			empcreate.ClickonRoleDropdown();
+			testutilsWeb.test.log(Status.INFO, "Click on Role Drodpdown");
+			empcreate.SelectRole();
+			testutilsWeb.test.log(Status.INFO, "Select Role From Dropdown");
+			empcreate.ClickonDepartmentDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Department From Dropdown");
+			empcreate.EnterEmaild();
+			testutilsWeb.test.log(Status.INFO, "Enter Emaild");
+			empcreate.EnterMobilenumber();
+			testutilsWeb.test.log(Status.INFO, "Enter Mobile mumber");
+			empcreate.SelectGenderDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Gender");
+			empcreate.SelectReportingManagerDropdown();
+			testutilsWeb.test.log(Status.INFO, "SElect Reporting Manager");
+			empcreate.EnterJoiningDate();
+			testutilsWeb.test.log(Status.INFO, "Enter joining Date");
+			empcreate.EnterEmployeeCode();
+			testutilsWeb.test.log(Status.INFO, "Enter Employee Code");
+			empcreate.SelectBandFromDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Band From Dropdown");
+			empcreate.SelectDesignationDropdown();
+			testutilsWeb.test.log(Status.INFO, "Select Designation From dropdown");
+			empcreate.ClickonFinalSubmitButton();
+			testutilsWeb.test.log(Status.INFO, "Click on Final Submit Button");
+
+			Thread.sleep(1000);
+			
+			if (empcreate.VerifyEmpCreated()) {
+				testutilsWeb.passTestCase("User is able to Create New Employee");
+			} else {
+				testutilsWeb.failTestCase("User is not able to Create New Employee");
+
+			}
+
+		} catch (Exception e) {
+			testutilsWeb.failTestCase("Exception occurred during Company Employee Creation flow:" + e.getMessage());
+			e.printStackTrace(); // Log the exception for debugging
+			// TODO: handle exception
+
+		}
+	}
+	
+	
+	@Test(priority = 3, enabled = true)
+
+	public void PersonalInformation() throws IOException {
+		
+		
+	}
+	
+	
+	
+	
 
 	@AfterTest
 	public void teardown() {
