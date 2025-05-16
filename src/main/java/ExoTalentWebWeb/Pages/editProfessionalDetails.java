@@ -35,5 +35,7 @@ public class editProfessionalDetails extends TestBaseClassWeb {
 		action.clickElement(clickEdit);;
 	}
 	
+	
+	
 
 }
