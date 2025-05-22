@@ -22,6 +22,7 @@ import ExoTalentWeb.BaseClass.TestBaseClassWeb;
 import ExoTalentWeb.Utils.ActionKeywords;
 import ExoTalentWeb.Utils.TestUtilsWeb;
 import ExoTalentWebWeb.Pages.WebLoginWithMobileNumber;
+import ExoTalentWebWeb.Pages.editProfessionalDetails;
 import ExoTalentWeb.Utils.ExcelUtils;
 import ExoTalentWebWeb.Pages.Adviserflow;
 import ExoTalentWebWeb.Pages.CandidateApplyJob;
@@ -32,6 +33,7 @@ import ExoTalentWebWeb.Pages.CanidateReferManually;
 import ExoTalentWebWeb.Pages.CompanyLogin;
 import ExoTalentWebWeb.Pages.CompanySignupPage;
 import ExoTalentWebWeb.Pages.CreateEmployee;
+import ExoTalentWebWeb.Pages.EditAdditionalDetails;
 import ExoTalentWebWeb.Pages.RecruiterReferCandiadte;
 import ExoTalentWebWeb.Pages.RecruiterSignup;
 import ExoTalentWebWeb.Pages.RecruiterLogin;
@@ -72,18 +74,20 @@ public class WebTestCases extends TestBaseClassWeb {
 	Adviserflow advflow;
 	CreateEmployee empcreate;
 	EditPersonalInformation editPersInfo;
+	editProfessionalDetails editProfDetails;
+	EditAdditionalDetails editAddDetails;
 
 	@BeforeTest
 	public void setUp() throws IOException {
 		System.out.println("Inside before");
 		InitializeBrowser();
-		
+
 //		String excelPath = System.getProperty("user.dir") + File.separator + "AndroidAppVersion2.0New" + File.separator + "TestData" + File.separator + "Datasheet.xlsx";
 		String excelPath = System.getProperty("user.dir") + "\\TestData\\Datasheet.xlsx";
 		System.out.println(excelPath);
 		// Create an instance of ExcelUtils to read data
 		excel = new ExcelUtils(excelPath, "Sheet1");
-		
+
 //		initializeBrowserEdge();
 		testutilsWeb = new TestUtilsWeb(driver);
 		action1 = new ActionKeywords();
@@ -107,8 +111,12 @@ public class WebTestCases extends TestBaseClassWeb {
 		advflow = new Adviserflow();
 
 		empcreate = new CreateEmployee();
-		
+
 		editPersInfo = new EditPersonalInformation();
+
+		editProfDetails = new editProfessionalDetails();
+
+		editAddDetails = new EditAdditionalDetails();
 	}
 
 	@Test(priority = 1, enabled = false)
@@ -127,7 +135,7 @@ public class WebTestCases extends TestBaseClassWeb {
 			testutilsWeb.test.log(Status.INFO, "Click on join as button");
 			loginCompany.ClickonCompanyButton();
 			testutilsWeb.test.log(Status.INFO, "Click on Company button");
-			String CompanyEmailid= excel.getCellData(1, 4);
+			String CompanyEmailid = excel.getCellData(1, 4);
 			loginCompany.EnterCompanyEmailid(CompanyEmailid);
 			testutilsWeb.test.log(Status.INFO, "Enter Email id");
 			loginCompany.EnterOTP();
@@ -563,10 +571,10 @@ public class WebTestCases extends TestBaseClassWeb {
 				testutilsWeb.failTestCase(
 						"User is not able to Verify Mandatory Fields after Clicking on Submit Button Without entering any data");
 			}
-			String FirstName=excel.getCellData(1, 0);
+			String FirstName = excel.getCellData(1, 0);
 			empcreate.EnterFirstName(FirstName);
 			testutilsWeb.test.log(Status.INFO, "Enter First Name");
-			String LastName=excel.getCellData(1, 1);
+			String LastName = excel.getCellData(1, 1);
 			empcreate.EnterlastName(LastName);
 			testutilsWeb.test.log(Status.INFO, "Enter Last Name");
 			empcreate.ClickonRoleDropdown();
@@ -575,10 +583,10 @@ public class WebTestCases extends TestBaseClassWeb {
 			testutilsWeb.test.log(Status.INFO, "Select Role From Dropdown");
 			empcreate.ClickonDepartmentDropdown();
 			testutilsWeb.test.log(Status.INFO, "Select Department From Dropdown");
-			String Email= excel.getCellData(1, 2);
+			String Email = excel.getCellData(1, 2);
 			empcreate.EnterEmaild(Email);
 			testutilsWeb.test.log(Status.INFO, "Enter Emaild");
-			String MobileNumber= excel.getCellData(1, 3);
+			String MobileNumber = excel.getCellData(1, 3);
 //			System.out.println("------------" +MobileNumber);
 			empcreate.EnterMobilenumber(MobileNumber);
 			testutilsWeb.test.log(Status.INFO, "Enter Mobile mumber");
@@ -620,16 +628,15 @@ public class WebTestCases extends TestBaseClassWeb {
 		testutilsWeb.testCaseCreate("Tc 3: Company Page Edit Personal Details");
 
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			editPersInfo.ClickonLastEmployee();
-			testutilsWeb.test.log(Status.INFO, "Click on Last Employee");	
-			
+			testutilsWeb.test.log(Status.INFO, "Click on Last Employee");
+
 			editPersInfo.ScrollTop();
 			editPersInfo.ClickonEditDetails();
-			testutilsWeb.test.log(Status.INFO, "Click on Edit Details");	
+			testutilsWeb.test.log(Status.INFO, "Click on Edit Details");
 			editPersInfo.ClickonSubmitButton();
-			testutilsWeb.test.log(Status.INFO, "Click on Submit button");	
-			
+			testutilsWeb.test.log(Status.INFO, "Click on Submit button");
 
 			if (editPersInfo.verifyFields()) {
 
@@ -641,32 +648,128 @@ public class WebTestCases extends TestBaseClassWeb {
 						"User is not able to Verify Mandatory Fields after Clicking on Submit Button Without entering any data");
 			}
 
-			
 			editPersInfo.EnterBirthdate();
-			testutilsWeb.test.log(Status.INFO, "Enter Birthdate");	
+			testutilsWeb.test.log(Status.INFO, "Enter Birthdate");
 			editPersInfo.SelectMaritialStatus();
-			testutilsWeb.test.log(Status.INFO, "Select Maritial Status");	
+			testutilsWeb.test.log(Status.INFO, "Select Maritial Status");
 			editPersInfo.SelectNationality();
-			testutilsWeb.test.log(Status.INFO, "Select Nationality from Dropdown");	
+			testutilsWeb.test.log(Status.INFO, "Select Nationality from Dropdown");
 			editPersInfo.EnterCurrentAddress();
-			testutilsWeb.test.log(Status.INFO, "Enter Current Address");	
+			testutilsWeb.test.log(Status.INFO, "Enter Current Address");
 			editPersInfo.EnterPermenantAddress();
-			testutilsWeb.test.log(Status.INFO, "Enter Permenant Address");	
+			testutilsWeb.test.log(Status.INFO, "Enter Permenant Address");
 			editPersInfo.ClickonFinalSubmitBtn();
-			testutilsWeb.test.log(Status.INFO, "Click on Submit button");	
+			testutilsWeb.test.log(Status.INFO, "Click on Submit button");
 			Thread.sleep(3000);
-			if(editPersInfo.verifyDetailsEdited()) {
+			if (editPersInfo.verifyDetailsEdited()) {
 				testutilsWeb.passTestCase("User is able to Edit Personal Information Details");
-			}else {
+			} else {
 				testutilsWeb.failTestCase("User is not able to Edit Personal Information Details");
 			}
 
 		} catch (Exception e) {
-			testutilsWeb.failTestCase("Exception occurred during Company Employee Personal Information Flow:" + e.getMessage());
+			testutilsWeb.failTestCase(
+					"Exception occurred during Company Employee Personal Information Flow:" + e.getMessage());
+			e.printStackTrace(); // Log the exception for debugging
+		}
+
+	}
+
+	@Test(priority = 4, enabled = true)
+
+	public void ProfessionalDetails() throws IOException {
+
+		testutilsWeb.testCaseCreate("Tc 4: Company Page Edit Professional Details");
+
+		try {
+
+			editProfDetails.ClickonEditProfessional();
+			testutilsWeb.test.log(Status.INFO, "Click on Edit Professional Details");
+			editProfDetails.ClickonSubmitButton();
+			testutilsWeb.test.log(Status.INFO, "Click on Submit Button");
+
+			if (editProfDetails.VerifyRequiredFields()) {
+				testutilsWeb.passTestCase(
+						"User is able to Verify Mandatory Fields after Clicking on Submit Button Without entering any data");
+			} else {
+				testutilsWeb.failTestCase(
+						"User is not able to Verify Mandatory Fields after Clicking on Submit Button Without entering any data");
+			}
+			editProfDetails.SelectWorkmode();
+			testutilsWeb.test.log(Status.INFO, "Select Work Mode");
+			editProfDetails.SelectEmployementType();
+			testutilsWeb.test.log(Status.INFO, "Select Employement Type");
+			editProfDetails.SelectWorkLocation();
+			testutilsWeb.test.log(Status.INFO, "Select Work Location");
+			editProfDetails.EnterLeaveBalance();
+			testutilsWeb.test.log(Status.INFO, "Enter Leave Balance");
+			editProfDetails.ClickonFinalSubmit();
+			testutilsWeb.test.log(Status.INFO, "Click on Final Submit");
+			Thread.sleep(3000);
+			if (editProfDetails.VerifyEditedProfessionalDetails()) {
+				testutilsWeb.passTestCase("User is able to Edit Professional Information Details");
+			} else {
+				testutilsWeb.failTestCase("User is not able to Edit Professional Information Details");
+			}
+		} catch (Exception e) {
+			testutilsWeb.failTestCase(
+					"Exception occurred during Company Employee Professional Details Edit Flow:" + e.getMessage());
+			e.printStackTrace(); // Log the exception for debugging
+		}
+	}
+
+	@Test(priority = 5, enabled = true)
+
+	public void AdditionalDetails() throws IOException {
+
+		testutilsWeb.testCaseCreate("Tc 5: Company Page Edit Additional Details");
+
+		try {
+
+			editAddDetails.ClickonEditAdditionalDetails();
+			testutilsWeb.test.log(Status.INFO, "Click on Additional Details");
+			editAddDetails.ClickonAddSubmitButton();
+			testutilsWeb.test.log(Status.INFO, "Click on Submit button");
+			if (editAddDetails.VerifyAddDetailsMandatoryFields()) {
+				testutilsWeb.passTestCase(
+						"User is able to Verify Mandatory Fields after Clicking on Submit Button Without entering any data");
+			} else {
+				testutilsWeb.failTestCase(
+						"User is not able to Verify Mandatory Fields after Clicking on Submit Button Without entering any data");
+			}
+			String AdditionalFirstName = excel.getCellData(1, 4);
+			editAddDetails.EnterFirstNAme(AdditionalFirstName);
+			testutilsWeb.test.log(Status.INFO, "Enter First name");
+			String AdditionalLastName = excel.getCellData(1, 5);
+			editAddDetails.EnterLastNAme(AdditionalLastName);
+			testutilsWeb.test.log(Status.INFO, "Enter Last Name");
+			String AdditionalRelation = excel.getCellData(1, 6);
+			editAddDetails.EnterRelation(AdditionalRelation);
+			testutilsWeb.test.log(Status.INFO, "Enter Relation");
+			String AdditionalPhone = excel.getCellData(1, 7);
+			editAddDetails.EnterAdditionalPhone(AdditionalPhone);
+			testutilsWeb.test.log(Status.INFO, "Enter Phone Number");
+			String AdditionalCurrentadd = excel.getCellData(1, 8);
+			editAddDetails.EnterAdditionalCurrentadd(AdditionalCurrentadd);
+			testutilsWeb.test.log(Status.INFO, "Enter Current Address");
+			String AdditionalPermanentadd = excel.getCellData(1, 9);
+			editAddDetails.EnterAdditionalPermanentadd(AdditionalPermanentadd);
+			testutilsWeb.test.log(Status.INFO, "Enter Permanent Address");
+			editAddDetails.ClickonFinalSubmit();
+			testutilsWeb.test.log(Status.INFO, "Click on Submit button");
+			Thread.sleep(6000);
+			if (editAddDetails.VerifyAdditionalDetails()) {
+				testutilsWeb.passTestCase("User is able to Edit Additional Details");
+			} else {
+				testutilsWeb.failTestCase("User is not able to Edit Additional Details");
+			}
+
+		} catch (Exception e) {
+			testutilsWeb.failTestCase(
+					"Exception occurred during Company Employee Additional Details Edit Flow:" + e.getMessage());
 			e.printStackTrace(); // Log the exception for debugging
 			// TODO: handle exception
 		}
-
 	}
 
 	@AfterTest

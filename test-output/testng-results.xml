@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="8" total="11" passed="3" failed="0" skipped="0">
+<testng-results ignored="8" total="13" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-05-16T11:46:09 IST" name="Default suite" finished-at="2025-05-16T11:46:59 IST" duration-ms="50074">
+  <suite started-at="2025-05-22T16:41:17 IST" name="Default suite" finished-at="2025-05-22T16:42:15 IST" duration-ms="58597">
     <groups>
     </groups>
-    <test started-at="2025-05-16T11:46:09 IST" name="Default test" finished-at="2025-05-16T11:46:59 IST" duration-ms="50074">
+    <test started-at="2025-05-22T16:41:17 IST" name="Default test" finished-at="2025-05-22T16:42:15 IST" duration-ms="58597">
       <class name="ExoTalentWeb.TestCase.WebTestCases">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:ExoTalentWeb.TestCase.WebTestCases@1d2adfbe]" started-at="2025-05-16T11:46:09 IST" name="setUp" finished-at="2025-05-16T11:46:16 IST" duration-ms="7849" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ExoTalentWeb.TestCase.WebTestCases@223d2c72]" started-at="2025-05-22T16:41:17 IST" name="setUp" finished-at="2025-05-22T16:41:20 IST" duration-ms="3526" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="CompanyLoginProduction()[pri:1, instance:ExoTalentWeb.TestCase.WebTestCases@1d2adfbe]" started-at="2025-05-16T11:46:16 IST" name="CompanyLoginProduction" finished-at="2025-05-16T11:46:42 IST" duration-ms="25707" status="PASS">
+        <test-method signature="CompanyLoginProduction()[pri:1, instance:ExoTalentWeb.TestCase.WebTestCases@223d2c72]" started-at="2025-05-22T16:41:20 IST" name="CompanyLoginProduction" finished-at="2025-05-22T16:41:42 IST" duration-ms="21761" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CompanyLoginProduction -->
-        <test-method signature="CreateEmployee()[pri:2, instance:ExoTalentWeb.TestCase.WebTestCases@1d2adfbe]" started-at="2025-05-16T11:46:42 IST" name="CreateEmployee" finished-at="2025-05-16T11:46:49 IST" duration-ms="6429" status="PASS">
+        <test-method signature="CreateEmployee()[pri:2, instance:ExoTalentWeb.TestCase.WebTestCases@223d2c72]" started-at="2025-05-22T16:41:42 IST" name="CreateEmployee" finished-at="2025-05-22T16:41:48 IST" duration-ms="6138" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CreateEmployee -->
-        <test-method signature="PersonalInformation()[pri:3, instance:ExoTalentWeb.TestCase.WebTestCases@1d2adfbe]" started-at="2025-05-16T11:46:49 IST" name="PersonalInformation" finished-at="2025-05-16T11:46:58 IST" duration-ms="9475" status="PASS">
+        <test-method signature="PersonalInformation()[pri:3, instance:ExoTalentWeb.TestCase.WebTestCases@223d2c72]" started-at="2025-05-22T16:41:48 IST" name="PersonalInformation" finished-at="2025-05-22T16:42:00 IST" duration-ms="11386" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- PersonalInformation -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:ExoTalentWeb.TestCase.WebTestCases@1d2adfbe]" started-at="2025-05-16T11:46:58 IST" name="teardown" finished-at="2025-05-16T11:46:59 IST" duration-ms="582" status="PASS">
+        <test-method signature="ProfessionalDetails()[pri:4, instance:ExoTalentWeb.TestCase.WebTestCases@223d2c72]" started-at="2025-05-22T16:42:00 IST" name="ProfessionalDetails" finished-at="2025-05-22T16:42:05 IST" duration-ms="4970" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ProfessionalDetails -->
+        <test-method signature="AdditionalDetails()[pri:5, instance:ExoTalentWeb.TestCase.WebTestCases@223d2c72]" started-at="2025-05-22T16:42:05 IST" name="AdditionalDetails" finished-at="2025-05-22T16:42:15 IST" duration-ms="10374" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AdditionalDetails -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:ExoTalentWeb.TestCase.WebTestCases@223d2c72]" started-at="2025-05-22T16:42:15 IST" name="teardown" finished-at="2025-05-22T16:42:15 IST" duration-ms="418" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
