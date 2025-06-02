@@ -725,7 +725,8 @@ public class WebTestCases extends TestBaseClassWeb {
 		testutilsWeb.testCaseCreate("Tc 5: Company Page Edit Additional Details");
 
 		try {
-
+			
+			Thread.sleep(3000);
 			editAddDetails.ClickonEditAdditionalDetails();
 			testutilsWeb.test.log(Status.INFO, "Click on Additional Details");
 			editAddDetails.ClickonAddSubmitButton();

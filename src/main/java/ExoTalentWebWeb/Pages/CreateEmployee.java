@@ -50,7 +50,7 @@ public class CreateEmployee extends TestBaseClassWeb {
 		action.clickElement(SubmitBtn);
 	}
 
-	@FindBy(xpath = "//label[.='First Name']")
+	@FindBy(xpath = "//label[.='First Name *']")
 	private WebElement VerifyFields;
 
 	public boolean VerifyMandatoryFields() {
