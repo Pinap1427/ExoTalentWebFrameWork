@@ -96,7 +96,10 @@ public class CompanyJobCreate extends TestBaseClassWeb {
 	@FindBy(xpath = "(//h1[@class=\"text-lg text-black font-semibold line-clamp-2 self-start flex-1\"])[1]")
 	public WebElement VerifyJob;
 
-	public boolean VerifyJobCreated() {
+	public boolean VerifyJobCreated() throws InterruptedException {
+		Actions act= new Actions(driver);
+		act.moveToElement(VerifyJob).build().perform();
+		Thread.sleep(1000);
 		return action.isDisplay(VerifyJob);
 		
 

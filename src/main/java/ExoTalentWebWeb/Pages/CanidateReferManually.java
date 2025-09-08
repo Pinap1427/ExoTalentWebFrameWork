@@ -34,7 +34,8 @@ public class CanidateReferManually extends TestBaseClassWeb {
 	private WebElement SearchEmail;
 
 	public void EneterCandidateEmailid() throws InterruptedException {
-		action.sendKeysElement(EnterCandiEmailID, "testuser444@gmail.com");
+//		action.sendKeysElement(EnterCandiEmailID, "testuser444@gmail.com");////this is for dev server///
+		action.sendKeysElement(EnterCandiEmailID, "mmore35555555555@gmail.com");
 		Thread.sleep(1000);
 		action.clickElement(SearchEmail);
 	}

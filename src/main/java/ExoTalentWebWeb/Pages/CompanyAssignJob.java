@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -23,8 +24,12 @@ public class CompanyAssignJob extends TestBaseClassWeb {
 
 	@FindBy(xpath = "(//h1[@class=\"text-lg text-black font-semibold line-clamp-2 self-start flex-1\"])[1]")
 	private WebElement firstJobClk;
+	
 
-	public void ClickonFirstJob() {
+	public void ClickonFirstJob() throws InterruptedException {
+		Actions act= new Actions(driver);
+		act.moveToElement(firstJobClk).build().perform();
+		Thread.sleep(1000);
 		action.clickElement(firstJobClk);
 
 	}
@@ -46,7 +51,8 @@ public class CompanyAssignJob extends TestBaseClassWeb {
 	@FindBy(xpath = "(//div[@class=\"css-1up7coo\"])[2]")
 	private WebElement EmailidClk;
 
-	@FindBy(xpath = "//p[.='rohan@apmosys.com']")
+//	@FindBy(xpath = "//p[.='rohan@apmosys.com']")  -------this is for Dev server--------
+	@FindBy(xpath = "//p[.='pinapthor1@gmail.com]")
 	private WebElement selectRecr;
 
 	public void SelectRecruiterID() throws InterruptedException {

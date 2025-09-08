@@ -48,6 +48,7 @@ public class WebTestCases extends TestBaseClassWeb {
 	@Override
 	public void TestBaseClassWeb() throws IOException {
 //		 super();
+		
 //		 this.driver = driver;
 		driver = TestBaseClassWeb.driver;
 	}
@@ -119,7 +120,7 @@ public class WebTestCases extends TestBaseClassWeb {
 		editAddDetails = new EditAdditionalDetails();
 	}
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 4, enabled = false)
 	public void CompanyLogin() throws IOException {
 
 		testutilsWeb.extentReport();
@@ -186,7 +187,7 @@ public class WebTestCases extends TestBaseClassWeb {
 
 	}
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void CompanyJobCreate() throws IOException {
 
 		testutilsWeb.testCaseCreate("Tc 2: Company Page Job Create");
@@ -230,7 +231,7 @@ public class WebTestCases extends TestBaseClassWeb {
 		}
 	}
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	public void CompanyAssignJob() throws IOException {
 
 		testutilsWeb.testCaseCreate("Tc 3: Company Page Assign Job");
@@ -267,7 +268,7 @@ public class WebTestCases extends TestBaseClassWeb {
 
 	}
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void EditJob() throws IOException, InterruptedException, AWTException {
 
 		testutilsWeb.testCaseCreate("TC 4: Company Page Edit Job");
@@ -322,7 +323,7 @@ public class WebTestCases extends TestBaseClassWeb {
 
 	}
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 
 	public void CandidateReferbyManua() throws IOException, InterruptedException, AWTException {
 
@@ -550,7 +551,7 @@ public class WebTestCases extends TestBaseClassWeb {
 		}
 	}
 
-	@Test(priority = 2, enabled = true)
+	@Test(priority = 2, enabled = false)
 
 	public void CreateEmployee() throws IOException {
 
@@ -621,7 +622,7 @@ public class WebTestCases extends TestBaseClassWeb {
 		}
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 
 	public void PersonalInformation() throws IOException {
 
@@ -675,7 +676,7 @@ public class WebTestCases extends TestBaseClassWeb {
 
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 
 	public void ProfessionalDetails() throws IOException {
 
@@ -718,7 +719,7 @@ public class WebTestCases extends TestBaseClassWeb {
 		}
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 
 	public void AdditionalDetails() throws IOException {
 

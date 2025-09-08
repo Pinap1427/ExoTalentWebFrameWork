@@ -99,7 +99,7 @@ public class CompanyLogin extends TestBaseClassWeb {
 
 	}
 
-	@FindBy(xpath = "//button[.='Logout']")
+	@FindBy(xpath = "//button[.='Company']")
 	public WebElement verifyCompanyDetails;
 
 	@FindBy(xpath = "//button[.='Logout']")
